@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>800</width>
+    <height>600</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>MainWindow</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <widget class="QPushButton" name="LEFT">
+    <property name="geometry">
+     <rect>
+      <x>80</x>
+      <y>210</y>
+      <width>151</width>
+      <height>161</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>LEFT</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="RIGHT">
+    <property name="geometry">
+     <rect>
+      <x>510</x>
+      <y>220</y>
+      <width>151</width>
+      <height>161</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>RIGHT</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="FORWARD">
+    <property name="geometry">
+     <rect>
+      <x>300</x>
+      <y>50</y>
+      <width>151</width>
+      <height>161</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>FOWARD</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="BACK">
+    <property name="geometry">
+     <rect>
+      <x>300</x>
+      <y>370</y>
+      <width>151</width>
+      <height>161</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>back</string>
+    </property>
+   </widget>
+  </widget>
+  <widget class="QMenuBar" name="menubar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>800</width>
+     <height>26</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QStatusBar" name="statusbar"/>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
