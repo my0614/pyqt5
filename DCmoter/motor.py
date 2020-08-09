@@ -28,6 +28,12 @@ class Ui_MainWindow(object):
         self.BACK = QtWidgets.QPushButton(self.centralwidget)
         self.BACK.setGeometry(QtCore.QRect(300, 370, 151, 161))
         self.BACK.setObjectName("BACK")
+        self.speedup = QtWidgets.QPushButton(self.centralwidget)
+        self.speedup.setGeometry(QtCore.QRect(692, 410, 51, 61))
+        self.speedup.setObjectName("speedup")
+        self.speeddown = QtWidgets.QPushButton(self.centralwidget)
+        self.speeddown.setGeometry(QtCore.QRect(690, 480, 51, 61))
+        self.speeddown.setObjectName("speeddown")
         MainWindow.setCentralWidget(self.centralwidget)
         self.menubar = QtWidgets.QMenuBar(MainWindow)
         self.menubar.setGeometry(QtCore.QRect(0, 0, 800, 26))
@@ -47,6 +53,8 @@ class Ui_MainWindow(object):
         self.RIGHT.setText(_translate("MainWindow", "RIGHT"))
         self.FORWARD.setText(_translate("MainWindow", "FOWARD"))
         self.BACK.setText(_translate("MainWindow", "back"))
+        self.speedup.setText(_translate("MainWindow", "up"))
+        self.speeddown.setText(_translate("MainWindow", "down"))
 
 
 if __name__ == "__main__":
