@@ -17,10 +17,10 @@ class Ui_MainWindow(object):
         self.centralwidget = QtWidgets.QWidget(MainWindow)
         self.centralwidget.setObjectName("centralwidget")
         self.LEFT = QtWidgets.QPushButton(self.centralwidget)
-        self.LEFT.setGeometry(QtCore.QRect(80, 210, 151, 161))
+        self.LEFT.setGeometry(QtCore.QRect(80, 220, 151, 121))
         self.LEFT.setObjectName("LEFT")
         self.RIGHT = QtWidgets.QPushButton(self.centralwidget)
-        self.RIGHT.setGeometry(QtCore.QRect(510, 220, 151, 161))
+        self.RIGHT.setGeometry(QtCore.QRect(510, 220, 151, 131))
         self.RIGHT.setObjectName("RIGHT")
         self.FORWARD = QtWidgets.QPushButton(self.centralwidget)
         self.FORWARD.setGeometry(QtCore.QRect(300, 50, 151, 161))
@@ -34,6 +34,9 @@ class Ui_MainWindow(object):
         self.speeddown = QtWidgets.QPushButton(self.centralwidget)
         self.speeddown.setGeometry(QtCore.QRect(690, 480, 51, 61))
         self.speeddown.setObjectName("speeddown")
+        self.STOP = QtWidgets.QPushButton(self.centralwidget)
+        self.STOP.setGeometry(QtCore.QRect(310, 260, 131, 71))
+        self.STOP.setObjectName("STOP")
         MainWindow.setCentralWidget(self.centralwidget)
         self.menubar = QtWidgets.QMenuBar(MainWindow)
         self.menubar.setGeometry(QtCore.QRect(0, 0, 800, 26))
@@ -55,6 +58,7 @@ class Ui_MainWindow(object):
         self.BACK.setText(_translate("MainWindow", "back"))
         self.speedup.setText(_translate("MainWindow", "up"))
         self.speeddown.setText(_translate("MainWindow", "down"))
+        self.STOP.setText(_translate("MainWindow", "STOP"))
 
 
 if __name__ == "__main__":
