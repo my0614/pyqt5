@@ -76,36 +76,40 @@ int main(void)
 		{
 			PORTA  = 0x02;
 			DC_Motor(0);
-			DC_Motor2(value);
-			_delay_ms(1000);
+			DC_Motor2(50);
+			//_delay_ms(1000);
 			memset(arr,0,10);
 		}
 		
 		if(strcmp(arr,"RIGHT") ==0)
 		{
 			PORTA  = 0x0F;
-			DC_Motor(value);
+			DC_Motor(50);
 			DC_Motor2(0);
-			_delay_ms(1000);
+			// _delay_ms(1000);
 			
 			memset(arr,0,10);
 		}
 		
 		if(strcmp(arr,"FORWARD") ==0)
 		{
+			if(OCR1A == 0 || OCR3A == 0)
+				value = 50;
 			PORTA  = 0x00;
 			DC_Motor(value);
 			DC_Motor2(value);
-			   _delay_ms(1000);
+			// _delay_ms(1000);
 			memset(arr,0,10);
 		}
 		
 		if(strcmp(arr,"BACK") ==0)
 		{
+			if(OCR1A == 0 || OCR3A == 0)
+				value = 50;
 			PORTA  = 0xFF;
 			DC_Motor(value);
 			DC_Motor2(value);
-			_delay_ms(1000);
+			
 			memset(arr,0,10);	
 		}
 		
@@ -139,7 +143,7 @@ int main(void)
 			_delay_ms(1000);
 			memset(arr,0,10);
 		}
-		
+		/*
 		PORTE &= ~(1<<TRIG);
 		_delay_us(10);
 		PORTE |= (1<<TRIG);
@@ -151,13 +155,13 @@ int main(void)
 		TCCR1B = 0x1A;
 		distance = (unsigned int)(SOUND_VELOCITY * (TCNT1 * 4 / 2) / 1000);
 		
-		if(distance < 300)
+		if(distance < 50)
 		{
 			DC_Motor(0);
 			DC_Motor2(0);
-			_delay_us(1000);
-		}
 		
+		}
+		*/
 	}
 }
 
@@ -169,6 +173,7 @@ ISR(USART0_RX_vect)
 		case 0x02 : state = 1; return;
 		case 0x03 : state = 0; i = 0;break;
 	}
+	
 	if(state == 1)
 	{
 		arr[i] = buf;
