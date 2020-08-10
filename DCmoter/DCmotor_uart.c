@@ -6,6 +6,10 @@
 #include <avr/io.h>
 #include <avr/interrupt.h>
 
+#define TRIG 6
+#define  ECHO 7
+#define SOUND_VELOCITY 340UL
+
 volatile char speed = 0;
 volatile char speed2 =0;
 int state = 0;
@@ -37,12 +41,15 @@ void DC_Motor2(int speed2)
 	if(speed2 > 100) speed2 = 100;
 	OCR3A = speed2;
 }
+unsigned int distance;
+
 
 int main(void)
 {
 	DDRA = 0xff;
 	int i,value=0;
 	DDRB=0x60;
+	
 	
 	TCCR1B=0x1A;
 	TCCR1A=0x82; // 모터1
@@ -51,6 +58,7 @@ int main(void)
 	ICR1=100;
 	
 	DDRE = 0x08;
+	DDRE = ((DDRE | (1<<TRIG)) & ~(1<<ECHO)); // 포트E에서 trig과 echo 사용
 	OCR3A = 50; // 모터2
 	OCR3B = 50; // 모터2
 	TCCR3B = 0x1A;
@@ -63,7 +71,7 @@ int main(void)
 	while(1)
 	{
 		
-		
+		TCCR1C = 0x03; //초음파센서 
 		if(strcmp(arr,"LEFT") ==0)
 		{
 			PORTA  = 0x02;
@@ -132,7 +140,23 @@ int main(void)
 			memset(arr,0,10);
 		}
 		
+		PORTE &= ~(1<<TRIG);
+		_delay_us(10);
+		PORTE |= (1<<TRIG);
+		_delay_us(10);
+		PORTE &= ~(1<<TRIG);
+		while(!(PINE & (1<<ECHO)));
+		TCNT1 = 0x0000;
+		while(PINE & (1<<ECHO));
+		TCCR1B = 0x1A;
+		distance = (unsigned int)(SOUND_VELOCITY * (TCNT1 * 4 / 2) / 1000);
 		
+		if(distance < 300)
+		{
+			DC_Motor(0);
+			DC_Motor2(0);
+			_delay_us(1000);
+		}
 		
 	}
 }
@@ -153,4 +177,3 @@ ISR(USART0_RX_vect)
 	
 	
 }
-
