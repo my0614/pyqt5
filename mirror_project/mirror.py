@@ -67,10 +67,9 @@ class Ui_MainWindow(object):
         self.now_time.setText("")
         self.now_time.setAlignment(QtCore.Qt.AlignCenter)
         self.now_time.setObjectName("now_time")
-        self.news = QtWidgets.QLabel(self.centralwidget)
-        self.news.setGeometry(QtCore.QRect(860, 520, 261, 281))
-        self.news.setStyleSheet("background-color : rgb(255,255,255);\n"
-"border-radius : 15px;")
+        self.news = QtWidgets.QTextBrowser(self.centralwidget)
+        self.news.setGeometry(QtCore.QRect(860, 540, 271, 261))
+        self.news.setStyleSheet("font : 50 14pt;")
         self.news.setObjectName("news")
         MainWindow.setCentralWidget(self.centralwidget)
         self.menubar = QtWidgets.QMenuBar(MainWindow)
@@ -87,7 +86,6 @@ class Ui_MainWindow(object):
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
         MainWindow.setWindowTitle(_translate("MainWindow", "MainWindow"))
-        self.news.setText(_translate("MainWindow", "News topic"))
 
 
 if __name__ == "__main__":

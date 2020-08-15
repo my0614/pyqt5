@@ -119,21 +119,17 @@ border-radius : 10px;</string>
      <set>Qt::AlignCenter</set>
     </property>
    </widget>
-   <widget class="QLabel" name="news">
+   <widget class="QTextBrowser" name="news">
     <property name="geometry">
      <rect>
       <x>860</x>
-      <y>520</y>
-      <width>261</width>
-      <height>281</height>
+      <y>540</y>
+      <width>271</width>
+      <height>261</height>
      </rect>
     </property>
     <property name="styleSheet">
-     <string notr="true">background-color : rgb(255,255,255);
-border-radius : 15px;</string>
-    </property>
-    <property name="text">
-     <string>News topic</string>
+     <string notr="true">barder-radius: 15px;</string>
     </property>
    </widget>
   </widget>
