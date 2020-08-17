@@ -12,13 +12,6 @@ def timer_event(self):
     self.timer.start(1000) #1초마다
     self.timer.timeout.connect(self.time_crolling)
 
-    self.timer2 = QTimer()
-    self.timer2.start()
-    self.timer.
-
-    
-
-
 
 def wheather_crolling(self):
         wheather_source = requests.get("https://search.naver.com/search.naver?sm=top_hty&fbm=1&ie=utf8&query=%EB%82%A0%EC%94%A8").text
@@ -30,8 +23,10 @@ def wheather_crolling(self):
         self.Weather.setText( temp[0].text + "℃\n")
         self.Weather_1.setText(temp_sub[0].text)
 
-        
 
+#def diner(self):
+ #   diner_source = requests.get("https://www.dsm-dms.com/").text
+  #  diner_soup = BeautifulSoup(diner_source, "html.parser")
 
 
 
@@ -74,6 +69,7 @@ def time_crolling(self):
         
 
 def news_crolling(self):
+    self.news.setStyleSheet("font : 75 12pt;")
     news_source =requests.get("https://search.naver.com/search.naver?sm=tab_hty.top&where=nexearch&query=%EB%89%B4%EC%8A%A4%ED%86%A0%ED%94%BD&oquery=%EB%84%A4%EC%9D%B4%EB%B2%84+%EC%8B%A4%EC%8B%9C%EA%B0%84+%EA%B2%80%EC%83%89%EC%96%B4+%EC%88%9C%EC%9C%84&tqi=UzQlmwp0J14ssflcJlsssssssHR-396770").text
     news_soup = BeautifulSoup(news_source, "html.parser")
     sub_key = news_soup.select("span.tit")
@@ -100,13 +96,26 @@ def news_crolling(self):
                 break
     
    
+def baseball_crolling(self):
+    self.baseball.setStyleSheet("font : 75 12pt;")
+    baseball_source = requests.get("https://sports.media.daum.net/sports/baseball/").text
+    baseball_soup = BeautifulSoup(baseball_source,"html.parser")
+    rank = baseball_soup.select("span.txt_team")
+    self.baseball.append("2020 프로야구 순위\n")
     
-
+    index = 0
+    for i in rank:
+        index +=1
+        #print(str(index))
+        self.baseball.append(str(index) +"   " + str(i))
+        if index >= 10:
+            break
 
 Ui_MainWindow.timer_event = timer_event
 Ui_MainWindow.wheather_crolling = wheather_crolling
 Ui_MainWindow.time_crolling = time_crolling
 Ui_MainWindow.news_crolling = news_crolling
+Ui_MainWindow.baseball_crolling =baseball_crolling
 
 
 if __name__ == "__main__":
@@ -119,5 +128,6 @@ if __name__ == "__main__":
     ui.wheather_crolling()
     ui.time_crolling()
     ui.news_crolling()
+    ui.baseball_crolling()
     MainWindow.show()
     sys.exit(app.exec_())
