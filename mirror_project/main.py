@@ -6,21 +6,17 @@ from PyQt5.QtCore import QTimer
 from datetime import datetime
 import threading
 
-def Timer_event(self):
-    #반복기능_ time
+def timer_event(self):
+    #now_time 
     self.timer = QTimer()
     self.timer.start(1000) #1초마다
-    self.timer.timeout.connect(time_crolling)
+    self.timer.timeout.connect(self.time_crolling)
 
-    #반복기능_ wheather
-    self.timer = QTimer()
-    self.timer.start(10000) # 10초마다
-    self.timer.timeout.connect(wheather_crolling)
+    self.timer2 = QTimer()
+    self.timer2.start()
+    self.timer.
 
-    #반복기능_ news
-    self.timer = QTimer()
-    self.timer.start(60000) # 1분마다
-    self.timer.timeout.connect(news_crolling)
+    
 
 
 
@@ -34,10 +30,13 @@ def wheather_crolling(self):
         self.Weather.setText( temp[0].text + "℃\n")
         self.Weather_1.setText(temp_sub[0].text)
 
+        
+
 
 
 
 def time_crolling(self):
+    
     clock =0
     clock = datetime.today()
     self.now_time.setStyleSheet("font : 75 25pt; background-color : white; border-radius : 15px;")
@@ -51,19 +50,28 @@ def time_crolling(self):
         if clock.second <= 10 and clock.minute <= 10:
             self.now_time.setText("PM " + str(clock.hour) + " : 0" + str(clock.minute) + " : 0" + str(clock.second))
 
+    elif clock.hour == 0:
+        if clock.second >= 10 and clock.minute >=10:
+            self.now_time.setText("AM  0" + str(clock.hour) + " : " + str(clock.minute) + " : " + str(clock.second))
+        elif clock.second >= 10 and clock.minute <= 10:
+            self.now_time.setText("AM  0" + str(clock.hour) + " : 0" + str(clock.minute) + " : " + str(clock.second))
+        elif clock.second <= 10 and clock.minute >= 10:
+            self.now_time.setText("AM  0" + str(clock.hour) + " : " + str(clock.minute) + " : 0" + str(clock.second))
+        if clock.second <=10 and clock.minute <= 10:
+            self.now_time.setText("AM " + str(clock.hour) + " : 0" + str(clock.minute) + " : 0" + str(clock.second))
+
     else:
         if clock.second >= 10 and clock.minute >=10:
-            self.now_time.setText("AM " + str(clock.hour) + " : " + str(clock.minute) + " : " + str(clock.second))
+            self.now_time.setText("AM  0" + str(clock.hour) + " : " + str(clock.minute) + " : " + str(clock.second))
         elif clock.second >= 10 and clock.minute <= 10:
-            self.now_time.setText("AM " + str(clock.hour) + " : " + str(clock.minute) + " : " + str(clock.second))
+            self.now_time.setText("AM  0" + str(clock.hour) + " : 0" + str(clock.minute) + " : " + str(clock.second))
         elif clock.second <= 10 and clock.minute >= 10:
-            self.now_time.setText("AM " + str(clock.hour) + " : " + str(clock.minute) + " : " + str(clock.second))
+            self.now_time.setText("AM  0" + str(clock.hour) + " : " + str(clock.minute) + " : 0" + str(clock.second))
         if clock.second <=10 and clock.minute <= 10:
-            self.now_time.setText("AM " + str(clock.hour) + " : " + str(clock.minute) + " : " + str(clock.second))  
-        # new_crolling 반복      
-        self.timer = QTimer()
-        self.timer.start(10000)# 10초마다 가져오기
-        self.timer.timeout.connect(self.news_crolling)
+            self.now_time.setText("AM " + str(clock.hour) + " : 0" + str(clock.minute) + " : 0" + str(clock.second))
+        
+    
+        
 
 def news_crolling(self):
     news_source =requests.get("https://search.naver.com/search.naver?sm=tab_hty.top&where=nexearch&query=%EB%89%B4%EC%8A%A4%ED%86%A0%ED%94%BD&oquery=%EB%84%A4%EC%9D%B4%EB%B2%84+%EC%8B%A4%EC%8B%9C%EA%B0%84+%EA%B2%80%EC%83%89%EC%96%B4+%EC%88%9C%EC%9C%84&tqi=UzQlmwp0J14ssflcJlsssssssHR-396770").text
@@ -90,13 +98,14 @@ def news_crolling(self):
             cnt += 1
             if index >= 15:
                 break
+    
+   
+    
 
-        
 
-
-Ui_MainWindow.Timer_event = Timer_event
-Ui_MainWindow.time_crolling = time_crolling
+Ui_MainWindow.timer_event = timer_event
 Ui_MainWindow.wheather_crolling = wheather_crolling
+Ui_MainWindow.time_crolling = time_crolling
 Ui_MainWindow.news_crolling = news_crolling
 
 
@@ -105,8 +114,8 @@ if __name__ == "__main__":
     app = QtWidgets.QApplication(sys.argv)
     MainWindow = QtWidgets.QMainWindow()
     ui = Ui_MainWindow()
+    ui.timer_event()
     ui.setupUi(MainWindow)
-    ui.Timer_event()
     ui.wheather_crolling()
     ui.time_crolling()
     ui.news_crolling()
