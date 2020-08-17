@@ -122,10 +122,23 @@ border-radius : 10px;</string>
    <widget class="QTextBrowser" name="news">
     <property name="geometry">
      <rect>
-      <x>860</x>
-      <y>540</y>
-      <width>271</width>
-      <height>261</height>
+      <x>820</x>
+      <y>500</y>
+      <width>311</width>
+      <height>321</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">barder-radius: 15px;</string>
+    </property>
+   </widget>
+   <widget class="QTextBrowser" name="baseball">
+    <property name="geometry">
+     <rect>
+      <x>600</x>
+      <y>500</y>
+      <width>201</width>
+      <height>321</height>
      </rect>
     </property>
     <property name="styleSheet">
