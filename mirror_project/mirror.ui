@@ -46,7 +46,7 @@
      </font>
     </property>
     <property name="styleSheet">
-     <string notr="true">background-color : rgb(255, 255, 255);
+     <string notr="true">background-color : rgb(255, 167, 140);
 font: 75 9pt &quot;Agency FB&quot;;
 border-top-right-radius : 10px;
 border-top-left-radius : 10px;</string>
@@ -77,7 +77,7 @@ border-top-left-radius : 10px;</string>
      </font>
     </property>
     <property name="styleSheet">
-     <string notr="true">background-color : rgb(255, 255, 255);
+     <string notr="true">background-color : rgb(255, 167, 140);
 font: 75 9pt &quot;Agency FB&quot;;
 border-bottom-right-radius : 10px;
 border-bottom-left-radius : 10px;</string>
@@ -119,20 +119,20 @@ border-radius : 10px;</string>
      <set>Qt::AlignCenter</set>
     </property>
    </widget>
-   <widget class="QTextBrowser" name="news">
+   <widget class="QTextBrowser" name="diner_moring">
     <property name="geometry">
      <rect>
-      <x>820</x>
+      <x>320</x>
       <y>500</y>
-      <width>311</width>
+      <width>231</width>
       <height>321</height>
      </rect>
     </property>
     <property name="styleSheet">
-     <string notr="true">barder-radius: 15px;</string>
+     <string notr="true">barder: none;</string>
     </property>
    </widget>
-   <widget class="QTextBrowser" name="baseball">
+   <widget class="QTextEdit" name="sports">
     <property name="geometry">
      <rect>
       <x>600</x>
@@ -142,7 +142,36 @@ border-radius : 10px;</string>
      </rect>
     </property>
     <property name="styleSheet">
-     <string notr="true">barder-radius: 15px;</string>
+     <string notr="true">border-radius : 15px;
+font: 9pt &quot;Agency FB&quot;;</string>
+    </property>
+   </widget>
+   <widget class="QTextEdit" name="topic">
+    <property name="geometry">
+     <rect>
+      <x>820</x>
+      <y>500</y>
+      <width>311</width>
+      <height>321</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">border-radius : 15px;
+font: 9pt &quot;Agency FB&quot;;</string>
+    </property>
+   </widget>
+   <widget class="QTextBrowser" name="myinfo">
+    <property name="geometry">
+     <rect>
+      <x>70</x>
+      <y>500</y>
+      <width>231</width>
+      <height>321</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">barder: none;
+font: 9pt &quot;Agency FB&quot;;</string>
     </property>
    </widget>
   </widget>

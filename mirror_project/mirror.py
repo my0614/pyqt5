@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file 'mirror.ui'
+# Form implementation generated from reading ui file '.\mirror.ui'
 #
 # Created by: PyQt5 UI code generator 5.13.2
 #
@@ -29,7 +29,7 @@ class Ui_MainWindow(object):
         font.setItalic(False)
         font.setWeight(9)
         self.Weather.setFont(font)
-        self.Weather.setStyleSheet("background-color : rgb(255, 255, 255);\n"
+        self.Weather.setStyleSheet("background-color : rgb(255, 167, 140);\n"
 "font: 75 9pt \"Agency FB\";\n"
 "border-top-right-radius : 10px;\n"
 "border-top-left-radius : 10px;")
@@ -45,7 +45,7 @@ class Ui_MainWindow(object):
         font.setItalic(False)
         font.setWeight(9)
         self.Weather_1.setFont(font)
-        self.Weather_1.setStyleSheet("background-color : rgb(255, 255, 255);\n"
+        self.Weather_1.setStyleSheet("background-color : rgb(255, 167, 140);\n"
 "font: 75 9pt \"Agency FB\";\n"
 "border-bottom-right-radius : 10px;\n"
 "border-bottom-left-radius : 10px;")
@@ -67,14 +67,25 @@ class Ui_MainWindow(object):
         self.now_time.setText("")
         self.now_time.setAlignment(QtCore.Qt.AlignCenter)
         self.now_time.setObjectName("now_time")
-        self.news = QtWidgets.QTextBrowser(self.centralwidget)
-        self.news.setGeometry(QtCore.QRect(820, 500, 311, 321))
-        self.news.setStyleSheet("barder-radius: 15px;")
-        self.news.setObjectName("news")
-        self.baseball = QtWidgets.QTextBrowser(self.centralwidget)
-        self.baseball.setGeometry(QtCore.QRect(600, 500, 201, 321))
-        self.baseball.setStyleSheet("barder-radius: 15px;")
-        self.baseball.setObjectName("baseball")
+        self.diner_moring = QtWidgets.QTextBrowser(self.centralwidget)
+        self.diner_moring.setGeometry(QtCore.QRect(320, 500, 231, 321))
+        self.diner_moring.setStyleSheet("barder: none;")
+        self.diner_moring.setObjectName("diner_moring")
+        self.sports = QtWidgets.QTextEdit(self.centralwidget)
+        self.sports.setGeometry(QtCore.QRect(600, 500, 201, 321))
+        self.sports.setStyleSheet("border-radius : 15px;\n"
+"font: 9pt \"Agency FB\";")
+        self.sports.setObjectName("sports")
+        self.topic = QtWidgets.QTextEdit(self.centralwidget)
+        self.topic.setGeometry(QtCore.QRect(820, 500, 311, 321))
+        self.topic.setStyleSheet("border-radius : 15px;\n"
+"font: 9pt \"Agency FB\";")
+        self.topic.setObjectName("topic")
+        self.myinfo = QtWidgets.QTextBrowser(self.centralwidget)
+        self.myinfo.setGeometry(QtCore.QRect(70, 500, 231, 321))
+        self.myinfo.setStyleSheet("barder: none;\n"
+"font: 9pt \"Agency FB\";")
+        self.myinfo.setObjectName("myinfo")
         MainWindow.setCentralWidget(self.centralwidget)
         self.menubar = QtWidgets.QMenuBar(MainWindow)
         self.menubar.setGeometry(QtCore.QRect(0, 0, 1206, 26))
