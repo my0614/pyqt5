@@ -5,13 +5,15 @@ from bs4 import BeautifulSoup
 from PyQt5 import QtCore, QtGui, QtWidgets
 from PyQt5.QtCore import QTimer
 from datetime import datetime
-import threading
+import calendar
 
 def timer_event(self):
     #now_time 
     self.timer = QTimer()
     self.timer.start(1000) #1초마다
-    self.timer.timeout.connect(self.time_crolling)
+    self.timer.timeout.connect(self.diner)
+
+
 
 
 def wheather_crolling(self):
@@ -22,13 +24,17 @@ def wheather_crolling(self):
         self.Weather.setStyleSheet("background-color : rgb(255,255,255); font : 75 22pt; border-top-right-radius: 15px; border-top-left-radius: 15px;")
         self.Weather_1.setStyleSheet("background-color : rgb(255,255,255); font : 75 15pt;border-bottom-right-radius: 15px; border-bottom-left-radius: 15px;")
         self.Weather.setText( temp[0].text + "℃\n")
+        
         self.Weather_1.setText(temp_sub[0].text)
+        self.timer2 = QTimer()
+        self.timer2.start(1000)
+        self.timer2.timeout.connect(self.time_crolling)
 
 def time_crolling(self):
     
     clock =0
     clock = datetime.today()
-    self.now_time.setStyleSheet("background-color :  rgb(255, 167, 140); font : 75 25pt;  border-radius : 15px; ")
+    self.now_time.setStyleSheet(" background-color : rgb(255, 170, 127); font : 75 25pt;  border-radius : 15px; ")
     if clock.hour >= 12:
         if clock.second >= 10 and clock.minute >=10:
             self.now_time.setText("PM " + str(clock.hour) + " : " + str(clock.minute) + " : " + str(clock.second))
@@ -47,9 +53,9 @@ def time_crolling(self):
         elif clock.second <= 10 and clock.minute >= 10:
             self.now_time.setText("AM  0" + str(clock.hour) + " : " + str(clock.minute) + " : 0" + str(clock.second))
         if clock.second <=10 and clock.minute <= 10:
-            self.now_time.setText("AM " + str(clock.hour) + " : 0" + str(clock.minute) + " : 0" + str(clock.second))
+            self.now_time.setText("AM 0" + str(clock.hour) + " : 0" + str(clock.minute) + " : 0" + str(clock.second))
 
-    else:
+    elif clock.hour >= 10:
         if clock.second >= 10 and clock.minute >=10:
             self.now_time.setText("AM  0" + str(clock.hour) + " : " + str(clock.minute) + " : " + str(clock.second))
         elif clock.second >= 10 and clock.minute <= 10:
@@ -63,7 +69,7 @@ def time_crolling(self):
         
 
 def news_crolling(self):
-    self.topic.setStyleSheet("font : 75 12pt; ")
+    #self.topic.setStyleSheet("font : 75 12pt; ")
     news_source =requests.get("https://search.naver.com/search.naver?sm=tab_hty.top&where=nexearch&query=%EB%89%B4%EC%8A%A4%ED%86%A0%ED%94%BD&oquery=%EB%84%A4%EC%9D%B4%EB%B2%84+%EC%8B%A4%EC%8B%9C%EA%B0%84+%EA%B2%80%EC%83%89%EC%96%B4+%EC%88%9C%EC%9C%84&tqi=UzQlmwp0J14ssflcJlsssssssHR-396770").text
     news_soup = BeautifulSoup(news_source, "html.parser")
     sub_key = news_soup.select("span.tit")
@@ -91,7 +97,7 @@ def news_crolling(self):
     
    
 def baseball_crolling(self):
-    self.sports.setStyleSheet("font : 75 12pt;")
+    #self.sports.setStyleSheet("font : 75 12pt;")
     baseball_source = requests.get("https://sports.media.daum.net/sports/baseball/").text
     baseball_soup = BeautifulSoup(baseball_source,"html.parser")
     rank = baseball_soup.select("span.txt_team")
@@ -107,6 +113,7 @@ def baseball_crolling(self):
 
 
 def Myinfo(self):
+    #self.myinfo.setStyleSheet("font: 75 11pt;")
     self.myinfo.append("기본 프로필")
     self.myinfo.append("김민영")
     self.myinfo.append("대덕소프트웨어마이스터")
@@ -116,11 +123,25 @@ def Myinfo(self):
     self.myinfo.append("https://blog.naver.com/aqi222")
 
 def diner(self):
-    clock = datetime.today()
+    self.diner_moring.clear()
+    date = self.calendar.selectedDate() #QDate 타입
+    #print(date.year(), date.month(),date.day())
+    clock2 = datetime.today()
     api = SchoolAPI(SchoolAPI.Region.DAEJEON, 'G100000170')
-    meals = api.get_monthly_menus(clock.year,clock.month)
-    self.diner_moring.append(str(meals[clock.day].breakfast))
+    meals = api.get_monthly_menus(date.year(),date.month())
+    if clock2.hour >=6 and clock2.hour <=11:
+        self.diner_moring.append("<아침 메뉴>")
+        self.diner_moring.append('\n'.join(meals[date.day()].breakfast)) # 아침 : breakfast 점심 : lunch 저녁 : dinner
+    elif clock2.hour >= 12 and clock2.hour <= 16:
+        self.diner_moring.append("<점심 메뉴>")
+        self.diner_moring.append('\n'.join(meals[date.day()].lunch)) # 아침 : breakfast 점심 : lunch 저녁 : dinner
+    elif clock2.hour >= 17:
+        self.diner_moring.append("<저녁 메뉴>")
+        self.diner_moring.append('\n'.join(meals[date.day()].dinner)) # 아침 : breakfast 점심 : lunch 저녁 : dinner
+    else:
+        self.diner_moring.append("급식이 없습니다.")
     
+
 
 
 
