@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file '.\mirror.ui'
+# Form implementation generated from reading ui file 'mirror.ui'
 #
 # Created by: PyQt5 UI code generator 5.13.2
 #
@@ -69,7 +69,8 @@ class Ui_MainWindow(object):
         self.now_time.setObjectName("now_time")
         self.diner_moring = QtWidgets.QTextBrowser(self.centralwidget)
         self.diner_moring.setGeometry(QtCore.QRect(320, 500, 231, 321))
-        self.diner_moring.setStyleSheet("barder: none;")
+        self.diner_moring.setStyleSheet("barder: none;\n"
+"font: 9pt \"Agency FB\";")
         self.diner_moring.setObjectName("diner_moring")
         self.sports = QtWidgets.QTextEdit(self.centralwidget)
         self.sports.setGeometry(QtCore.QRect(600, 500, 201, 321))

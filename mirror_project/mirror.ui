@@ -129,7 +129,8 @@ border-radius : 10px;</string>
      </rect>
     </property>
     <property name="styleSheet">
-     <string notr="true">barder: none;</string>
+     <string notr="true">barder: none;
+font: 9pt &quot;Agency FB&quot;;</string>
     </property>
    </widget>
    <widget class="QTextEdit" name="sports">
