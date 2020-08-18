@@ -1,4 +1,5 @@
 from mirror import *
+from schapi import SchoolAPI
 import requests
 from bs4 import BeautifulSoup
 from PyQt5 import QtCore, QtGui, QtWidgets
@@ -107,24 +108,19 @@ def baseball_crolling(self):
 
 def Myinfo(self):
     self.myinfo.append("기본 프로필")
-    self.myinfo.append("2002.06.14 김민영")
+    self.myinfo.append("김민영")
     self.myinfo.append("대덕소프트웨어마이스터")
-    self.myinfo.append("임베디드SW 재학")
-
+    self.myinfo.append("Github 계정")
+    self.myinfo.append("https://github.com/my0614")
+    self.myinfo.append("블로그 계정")
+    self.myinfo.append("https://blog.naver.com/aqi222")
 
 def diner(self):
-    diner_source = requests.get("https://www.dsm-dms.com/").text
-    diner_soup = BeautifulSoup(diner_source, "html.parser")
-    blackfirst = diner_soup.select("span.meal--card--temp")
-    self.diner_moring.append("아침")
-
-    cnt = 0
-    for i in blackfirst:
-        cnt += 1
-        print(cnt)
-        self.diner_moring.append(str(i))
-        if index >= 2:
-            break
+    clock = datetime.today()
+    api = SchoolAPI(SchoolAPI.Region.DAEJEON, 'G100000170')
+    meals = api.get_monthly_menus(clock.year,clock.month)
+    self.diner_moring.append(str(meals[clock.day].breakfast))
+    
 
 
 
