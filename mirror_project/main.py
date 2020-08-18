@@ -11,7 +11,23 @@ def timer_event(self):
     #now_time 
     self.timer = QTimer()
     self.timer.start(1000) #1초마다
-    self.timer.timeout.connect(self.diner)
+    self.timer.timeout.connect(self.time_crolling)
+
+def dinner_event(self):
+    self.timer2 = QTimer()
+    self.timer2.start(1000)
+    self.timer2.timeout.connect(self.diner)
+
+def wheather_event(self):
+    self.timer3 = QTimer()
+    self.timer3.start(60000) #1분마다
+    self.timer3.timeout.connect(self.wheather_crolling)
+
+def news_event(self):
+    self.timer4 = QTimer()
+    self.timer4.start(60000) #1분마다
+    self.timer4.timeout.connect(self.news_crolling)
+
 
 
 
@@ -24,11 +40,8 @@ def wheather_crolling(self):
         self.Weather.setStyleSheet("background-color : rgb(255,255,255); font : 75 22pt; border-top-right-radius: 15px; border-top-left-radius: 15px;")
         self.Weather_1.setStyleSheet("background-color : rgb(255,255,255); font : 75 15pt;border-bottom-right-radius: 15px; border-bottom-left-radius: 15px;")
         self.Weather.setText( temp[0].text + "℃\n")
-        
         self.Weather_1.setText(temp_sub[0].text)
-        self.timer2 = QTimer()
-        self.timer2.start(1000)
-        self.timer2.timeout.connect(self.time_crolling)
+       
 
 def time_crolling(self):
     
@@ -112,15 +125,9 @@ def baseball_crolling(self):
             break
 
 
-def Myinfo(self):
-    #self.myinfo.setStyleSheet("font: 75 11pt;")
-    self.myinfo.append("기본 프로필")
-    self.myinfo.append("김민영")
-    self.myinfo.append("대덕소프트웨어마이스터")
-    self.myinfo.append("Github 계정")
-    self.myinfo.append("https://github.com/my0614")
-    self.myinfo.append("블로그 계정")
-    self.myinfo.append("https://blog.naver.com/aqi222")
+def todo(self):
+    self.todolist.setStyleSheet("border-bottom : 2px solid gray; background-color : white; font : 75 17pt;")
+    self.todolist.setAlignment(QtCore.Qt.AlignCenter)
 
 def diner(self):
     self.diner_moring.clear()
@@ -151,7 +158,10 @@ Ui_MainWindow.time_crolling = time_crolling
 Ui_MainWindow.news_crolling = news_crolling
 Ui_MainWindow.baseball_crolling =baseball_crolling
 Ui_MainWindow.diner = diner
-Ui_MainWindow.Myinfo = Myinfo
+Ui_MainWindow.todo = todo
+Ui_MainWindow.news_event = news_event
+Ui_MainWindow.wheather_event = wheather_event
+Ui_MainWindow.dinner_event = dinner_event
 
 
 if __name__ == "__main__":
@@ -166,6 +176,9 @@ if __name__ == "__main__":
     ui.news_crolling()
     ui.baseball_crolling()
     ui.diner()
-    ui.Myinfo()
+    ui.todo()
+    ui.news_event()
+    ui.wheather_event()
+    ui.dinner_event()
     MainWindow.show()
     sys.exit(app.exec_())
