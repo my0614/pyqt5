@@ -13,6 +13,10 @@
   <property name="windowTitle">
    <string>MainWindow</string>
   </property>
+  <property name="styleSheet">
+   <string notr="true">font: 75 12pt &quot;Agency FB&quot;;
+border: none;</string>
+  </property>
   <widget class="QWidget" name="centralwidget">
    <widget class="QCalendarWidget" name="calendar">
     <property name="geometry">
@@ -130,7 +134,7 @@ border-radius : 10px;</string>
     </property>
     <property name="styleSheet">
      <string notr="true">barder: none;
-font: 9pt &quot;Agency FB&quot;;</string>
+font: 11pt &quot;Agency FB&quot;;</string>
     </property>
    </widget>
    <widget class="QTextEdit" name="sports">
@@ -144,7 +148,7 @@ font: 9pt &quot;Agency FB&quot;;</string>
     </property>
     <property name="styleSheet">
      <string notr="true">border-radius : 15px;
-font: 9pt &quot;Agency FB&quot;;</string>
+font: 11pt &quot;Agency FB&quot;;</string>
     </property>
    </widget>
    <widget class="QTextEdit" name="topic">
@@ -158,21 +162,197 @@ font: 9pt &quot;Agency FB&quot;;</string>
     </property>
     <property name="styleSheet">
      <string notr="true">border-radius : 15px;
-font: 9pt &quot;Agency FB&quot;;</string>
+font: 10pt &quot;Agency FB&quot;;</string>
     </property>
    </widget>
-   <widget class="QTextBrowser" name="myinfo">
+   <widget class="QLabel" name="todolist">
     <property name="geometry">
      <rect>
       <x>70</x>
       <y>500</y>
       <width>231</width>
-      <height>321</height>
+      <height>71</height>
      </rect>
     </property>
     <property name="styleSheet">
-     <string notr="true">barder: none;
-font: 9pt &quot;Agency FB&quot;;</string>
+     <string notr="true">background-color : rgb(255,255,255);
+font: 75 14pt &quot;Agency FB&quot;;
+</string>
+    </property>
+    <property name="text">
+     <string>To do list</string>
+    </property>
+   </widget>
+   <widget class="QLineEdit" name="todo1">
+    <property name="geometry">
+     <rect>
+      <x>70</x>
+      <y>570</y>
+      <width>231</width>
+      <height>46</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string> No 1.</string>
+    </property>
+   </widget>
+   <widget class="QLineEdit" name="todo2">
+    <property name="geometry">
+     <rect>
+      <x>70</x>
+      <y>610</y>
+      <width>231</width>
+      <height>46</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>No 2.</string>
+    </property>
+   </widget>
+   <widget class="QLineEdit" name="todo3">
+    <property name="geometry">
+     <rect>
+      <x>70</x>
+      <y>650</y>
+      <width>231</width>
+      <height>46</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>No 3.</string>
+    </property>
+   </widget>
+   <widget class="QLineEdit" name="todo5">
+    <property name="geometry">
+     <rect>
+      <x>70</x>
+      <y>730</y>
+      <width>231</width>
+      <height>46</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>No 5.</string>
+    </property>
+   </widget>
+   <widget class="QLineEdit" name="todo4">
+    <property name="geometry">
+     <rect>
+      <x>70</x>
+      <y>690</y>
+      <width>231</width>
+      <height>46</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>No 4.</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="made">
+    <property name="geometry">
+     <rect>
+      <x>70</x>
+      <y>770</y>
+      <width>231</width>
+      <height>51</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Agency FB</family>
+      <pointsize>14</pointsize>
+      <weight>9</weight>
+      <italic>false</italic>
+      <bold>false</bold>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color : rgb(255,255,255);
+border-top : 1px solid gray;
+font :75 14pt;</string>
+    </property>
+    <property name="text">
+     <string>Made by. Min young</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="pushButton">
+    <property name="geometry">
+     <rect>
+      <x>270</x>
+      <y>580</y>
+      <width>20</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">border : 1px solid gray;</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="pushButton_2">
+    <property name="geometry">
+     <rect>
+      <x>270</x>
+      <y>620</y>
+      <width>20</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">border : 1px solid gray;</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="pushButton_3">
+    <property name="geometry">
+     <rect>
+      <x>270</x>
+      <y>660</y>
+      <width>20</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">border : 1px solid gray;</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="pushButton_4">
+    <property name="geometry">
+     <rect>
+      <x>270</x>
+      <y>700</y>
+      <width>20</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">border : 1px solid gray;</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="pushButton_5">
+    <property name="geometry">
+     <rect>
+      <x>270</x>
+      <y>740</y>
+      <width>20</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">border : 1px solid gray;</string>
+    </property>
+    <property name="text">
+     <string/>
     </property>
    </widget>
   </widget>
@@ -182,7 +362,7 @@ font: 9pt &quot;Agency FB&quot;;</string>
      <x>0</x>
      <y>0</y>
      <width>1206</width>
-     <height>26</height>
+     <height>30</height>
     </rect>
    </property>
   </widget>
