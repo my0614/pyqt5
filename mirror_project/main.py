@@ -6,6 +6,7 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 from PyQt5.QtCore import QTimer
 from datetime import datetime
 import calendar
+import sys
 
 def timer_event(self):
     #now_time 
@@ -28,9 +29,10 @@ def news_event(self):
     self.timer4.start(60000) #1분마다
     self.timer4.timeout.connect(self.news_crolling)
 
-
-
-
+def todo_event(self):
+    self.timer5 = QTimer()
+    self.timer5.start(1000)
+    self.timer5.timeout.connect(self.todo)
 
 def wheather_crolling(self):
         wheather_source = requests.get("https://search.naver.com/search.naver?sm=top_hty&fbm=1&ie=utf8&query=%EB%82%A0%EC%94%A8").text
@@ -44,7 +46,6 @@ def wheather_crolling(self):
        
 
 def time_crolling(self):
-    
     clock =0
     clock = datetime.today()
     self.now_time.setStyleSheet(" background-color : rgb(255, 170, 127); font : 75 25pt;  border-radius : 15px; ")
@@ -68,7 +69,7 @@ def time_crolling(self):
         if clock.second <=10 and clock.minute <= 10:
             self.now_time.setText("AM 0" + str(clock.hour) + " : 0" + str(clock.minute) + " : 0" + str(clock.second))
 
-    elif clock.hour >= 10:
+    elif clock.hour <= 12:
         if clock.second >= 10 and clock.minute >=10:
             self.now_time.setText("AM  0" + str(clock.hour) + " : " + str(clock.minute) + " : " + str(clock.second))
         elif clock.second >= 10 and clock.minute <= 10:
@@ -126,12 +127,20 @@ def baseball_crolling(self):
 
 
 def todo(self):
-    self.todolist.setStyleSheet("border-bottom : 2px solid gray; background-color : white; font : 75 17pt;")
+    
+    self.todolist.setStyleSheet("border-bottom : 2px solid gray; background-color : white; font : 100 22pt;")
     self.todolist.setAlignment(QtCore.Qt.AlignCenter)
+ 
+
+
+
+
+
 
 def diner(self):
     self.diner_moring.clear()
     date = self.calendar.selectedDate() #QDate 타입
+
     #print(date.year(), date.month(),date.day())
     clock2 = datetime.today()
     api = SchoolAPI(SchoolAPI.Region.DAEJEON, 'G100000170')
@@ -159,6 +168,7 @@ Ui_MainWindow.news_crolling = news_crolling
 Ui_MainWindow.baseball_crolling =baseball_crolling
 Ui_MainWindow.diner = diner
 Ui_MainWindow.todo = todo
+#Ui_MainWindow.bt_click = bt_click
 Ui_MainWindow.news_event = news_event
 Ui_MainWindow.wheather_event = wheather_event
 Ui_MainWindow.dinner_event = dinner_event
@@ -177,6 +187,7 @@ if __name__ == "__main__":
     ui.baseball_crolling()
     ui.diner()
     ui.todo()
+    #ui.bt_click()
     ui.news_event()
     ui.wheather_event()
     ui.dinner_event()
