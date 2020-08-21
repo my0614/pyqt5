@@ -31,7 +31,7 @@ void DC_Motor(int speed)
 	if(speed<  0) speed=  0;
 	if(speed>100) speed=100;
 	OCR1A=speed;
-	OCR1B = 0;
+	
 }
 
 void DC_Motor2(int speed2)
@@ -39,16 +39,26 @@ void DC_Motor2(int speed2)
 	if(speed2 < 0) speed2 = 0;
 	if(speed2 > 100) speed2 = 100;
 	OCR3A = speed2;
-	OCR3B = 0;
+
 
 }
 
 void DC_back(int speed)
 {
-	OCR1B = speed;
-	OCR3B = speed;
+	if(speed2 < 0) speed2 = 0;
+	if(speed2 > 100) speed2 = 100;
+	OCR3B = speed2;
 	
 }
+
+void DC_back2(int speed)
+{
+	if(speed2 < 0) speed2 = 0;
+	if(speed2 > 100) speed2 = 100;
+	OCR1B = speed2;
+	
+}
+
 unsigned int distance;
 
 void bluetooth(void)
@@ -64,13 +74,13 @@ void ready(void)
 {
 	TCCR1B=0x1A;
 	TCCR1A=0x82; // 모터1
-	OCR1A=50; // 모터 1
-	OCR1B = 0;
+	OCR1A=0; // 모터 1
+	OCR1B = 80;
 	ICR1=100;
 	
 	
-	OCR3A = 50; // 모터2
-	OCR3B = 0; // 모터2
+	OCR3A = 0; // 모터2
+	OCR3B = 80; // 모터2
 	TCCR3B = 0x1A;
 	TCCR3A = 0x82;
 	ICR3 = 100;
@@ -79,10 +89,11 @@ void ready(void)
 
 int main(void)
 {
+	// OC3B = IN1 OC3A = IN2 OC1B = IN3 OC1A = IN4
 	DDRC = 0xff;
 	int i,value=0;
-	DDRB=0xf0; // 핀 5
-	DDRE = 0x0f;
+	DDRB=0xff;  // 전체 on 
+	DDRE = 0xff; // 전체 on
 	
 	
 
@@ -97,21 +108,24 @@ int main(void)
 		 
 		if(txt == 'L')
 		{
-			DDRB=0xf0; // 핀 5
+			//DDRB=0xf0; // 핀 5
 			
-			DC_Motor(0);
-			DC_Motor2(80);
-			//_delay_ms(1000);
+			DC_Motor(0); // OCR1A
+			DC_Motor2(value); // OCR3A
+			DC_back(0); //OCR3B
+			DC_back2(0); // OCR1B
 			memset(arr,0,10);
 		}
 		
 		if(txt == 'R')
 		{
-			DDRB=0xf0; // 핀 5
+			//DDRB=0xf0; // 핀 5
 			
-			DC_Motor(80);
+			DC_Motor(value);
+			DC_back(0);
+			DC_back2(0);
 			DC_Motor2(0);
-			// _delay_ms(1000);
+			
 			
 			memset(arr,0,10);
 		}
@@ -119,43 +133,42 @@ int main(void)
 		if(txt == 'F')
 		{
 			
-			DDRB=0xf2; // 핀 5
-			DDRE = 0x0f;
+			PORTE = 0x0f; // PORTE DC_back
+			PORTB = 0x20; // PORTE DC_back2
 			if(OCR1A == 0 || OCR3A == 0)
 				value = 80;
+			
 			PORTA  = 0x00;
 			DC_Motor(value);
+			DC_back(0);
 			DC_Motor2(value);
-			// _delay_ms(1000);
+			DC_back2(0); //OC3B
 			memset(arr,0,10);
 		}
 		
 		if(txt == 'B')
 		{
-			//if(OCR1A == 0 || OCR3A == 0)
-				//value = 80;
+			PORTE = 0x71; // PORTE DC_back
+			PORTB = 0x40; // PORTE DC_back2 
+			if(OCR1A == 0 || OCR3A == 0)
+				value = 80;
 			PORTA  = 0xFF;
 			
-			PORTB = 0xf4;
-			PORTE = 0x3f;
 			DC_Motor(0);
+			DC_back(value);
 			DC_Motor2(0);
+			DC_back2(value);
 			
-			OCR1B = 50;
-			OCR3B = 50;
+			
 			memset(arr,0,10);
-			if(txt != 'B')	
-			{
-				DDRB=0x00; // 핀 5
-				DDRE = 0x00;
-			}
+
 			
 		}
 		
 		if(txt == 'U') // 속도만 바꿔줌
 		{
 			
-		
+	
 			value += 20;
 			if(value >= 120) // 최대 speed
 			{
@@ -171,6 +184,7 @@ int main(void)
 		if(txt == 'D') // 속도만 바꿔줌
 		{
 			
+				
 			value -= 20;
 			if(value <= 20) // 최대 speed
 			{
@@ -184,15 +198,14 @@ int main(void)
 		if(txt == 'S')
 		{
 			
-			PORTA  = 0xFF;
 			DC_Motor(0);
-			
+			DC_back(0);
+			DC_back2(0);
 			DC_Motor2(0);
-			
-			_delay_ms(1000);
+			ready();
 			memset(arr,0,10);
 		}
 		
+		
 	}
 }
-
