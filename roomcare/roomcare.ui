@@ -85,7 +85,7 @@ border-radius : 15px;</string>
      <string/>
     </property>
    </widget>
-   <widget class="QLabel" name="label_4">
+   <widget class="QLabel" name="temp">
     <property name="geometry">
      <rect>
       <x>770</x>
@@ -102,7 +102,7 @@ border-radius : 15px;</string>
      <string/>
     </property>
    </widget>
-   <widget class="QLabel" name="label_5">
+   <widget class="QLabel" name="humi">
     <property name="geometry">
      <rect>
       <x>770</x>
@@ -123,7 +123,7 @@ border-radius : 15px;</string>
     <property name="geometry">
      <rect>
       <x>150</x>
-      <y>120</y>
+      <y>110</y>
       <width>81</width>
       <height>51</height>
      </rect>
@@ -202,6 +202,60 @@ font: 87 18pt &quot;Arial Black&quot;;</string>
     </property>
     <property name="text">
      <string>습도</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="LED1">
+    <property name="geometry">
+     <rect>
+      <x>120</x>
+      <y>180</y>
+      <width>141</width>
+      <height>111</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">border-radius :15px;
+color : white;
+font: 87 16pt &quot;Arial Black&quot;;</string>
+    </property>
+    <property name="text">
+     <string>ON</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="LED3">
+    <property name="geometry">
+     <rect>
+      <x>560</x>
+      <y>180</y>
+      <width>141</width>
+      <height>111</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">border-radius :15px;
+color : white;
+font: 87 16pt &quot;Arial Black&quot;;</string>
+    </property>
+    <property name="text">
+     <string>ON</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="LED2">
+    <property name="geometry">
+     <rect>
+      <x>340</x>
+      <y>370</y>
+      <width>141</width>
+      <height>111</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">border-radius :15px;
+color : white;
+font: 87 16pt &quot;Arial Black&quot;;</string>
+    </property>
+    <property name="text">
+     <string>OFF</string>
     </property>
    </widget>
   </widget>

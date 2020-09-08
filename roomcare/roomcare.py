@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file 'roomcare.ui'
+# Form implementation generated from reading ui file '.\roomcare.ui'
 #
 # Created by: PyQt5 UI code generator 5.13.2
 #
@@ -40,20 +40,20 @@ class Ui_MainWindow(object):
 "border-radius : 15px;")
         self.box3.setText("")
         self.box3.setObjectName("box3")
-        self.label_4 = QtWidgets.QLabel(self.centralwidget)
-        self.label_4.setGeometry(QtCore.QRect(770, 170, 160, 130))
-        self.label_4.setStyleSheet("background-color : white;\n"
+        self.temp = QtWidgets.QLabel(self.centralwidget)
+        self.temp.setGeometry(QtCore.QRect(770, 170, 160, 130))
+        self.temp.setStyleSheet("background-color : white;\n"
 "border-radius : 15px;")
-        self.label_4.setText("")
-        self.label_4.setObjectName("label_4")
-        self.label_5 = QtWidgets.QLabel(self.centralwidget)
-        self.label_5.setGeometry(QtCore.QRect(770, 360, 160, 130))
-        self.label_5.setStyleSheet("background-color : white;\n"
+        self.temp.setText("")
+        self.temp.setObjectName("temp")
+        self.humi = QtWidgets.QLabel(self.centralwidget)
+        self.humi.setGeometry(QtCore.QRect(770, 360, 160, 130))
+        self.humi.setStyleSheet("background-color : white;\n"
 "border-radius : 15px;")
-        self.label_5.setText("")
-        self.label_5.setObjectName("label_5")
+        self.humi.setText("")
+        self.humi.setObjectName("humi")
         self.lineEdit = QtWidgets.QLineEdit(self.centralwidget)
-        self.lineEdit.setGeometry(QtCore.QRect(150, 120, 81, 51))
+        self.lineEdit.setGeometry(QtCore.QRect(150, 110, 81, 51))
         self.lineEdit.setStyleSheet("border : none;\n"
 "font: 200 18pt \"Arial Black\";")
         self.lineEdit.setObjectName("lineEdit")
@@ -77,6 +77,24 @@ class Ui_MainWindow(object):
         self.lineEdit_5.setStyleSheet("border : none;\n"
 "font: 87 18pt \"Arial Black\";")
         self.lineEdit_5.setObjectName("lineEdit_5")
+        self.LED1 = QtWidgets.QPushButton(self.centralwidget)
+        self.LED1.setGeometry(QtCore.QRect(120, 180, 141, 111))
+        self.LED1.setStyleSheet("border-radius :15px;\n"
+"color : white;\n"
+"font: 87 16pt \"Arial Black\";")
+        self.LED1.setObjectName("LED1")
+        self.LED3 = QtWidgets.QPushButton(self.centralwidget)
+        self.LED3.setGeometry(QtCore.QRect(560, 180, 141, 111))
+        self.LED3.setStyleSheet("border-radius :15px;\n"
+"color : white;\n"
+"font: 87 16pt \"Arial Black\";")
+        self.LED3.setObjectName("LED3")
+        self.LED2 = QtWidgets.QPushButton(self.centralwidget)
+        self.LED2.setGeometry(QtCore.QRect(340, 370, 141, 111))
+        self.LED2.setStyleSheet("border-radius :15px;\n"
+"color : white;\n"
+"font: 87 16pt \"Arial Black\";")
+        self.LED2.setObjectName("LED2")
         MainWindow.setCentralWidget(self.centralwidget)
         self.statusbar = QtWidgets.QStatusBar(MainWindow)
         self.statusbar.setObjectName("statusbar")
@@ -94,6 +112,9 @@ class Ui_MainWindow(object):
         self.lineEdit_3.setText(_translate("MainWindow", "주방"))
         self.lineEdit_4.setText(_translate("MainWindow", "온도"))
         self.lineEdit_5.setText(_translate("MainWindow", "습도"))
+        self.LED1.setText(_translate("MainWindow", "ON"))
+        self.LED3.setText(_translate("MainWindow", "ON"))
+        self.LED2.setText(_translate("MainWindow", "OFF"))
 
 
 if __name__ == "__main__":
