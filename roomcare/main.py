@@ -24,6 +24,7 @@ def LED1_control(self):
         ser.write(bytes(message.encode()))
         self.LED1.setText("ON")
         self.LED1.move(122,180)
+        self.LED1.setStyleSheet("background-color : rgb(112,173,71); border-radius :15px;color : white; font: 87 16pt;font-weight : bold;")
         L1_State = 0
         
     else:
@@ -31,6 +32,7 @@ def LED1_control(self):
         ser.write(bytes(message.encode()))
         self.LED1.setText("OFF")
         self.LED1.move(122,360)
+        self.LED1.setStyleSheet("background-color : red; border-radius :15px;color : white; font: 87 16pt; font-weight : bold;")
         L1_State = 1
 
 def LED2_control(self):
@@ -39,6 +41,7 @@ def LED2_control(self):
         message = ''.join(['\x02','b', 'a', 't', 'h', 'n', '\x03'])
         ser.write(bytes(message.encode()))
         self.LED2.setText("ON")
+        self.LED2.setStyleSheet("background-color : rgb(112,173,71); border-radius :15px;color : white; font: 87 16pt;font-weight : bold;")
         self.LED2.move(338,180)
         L2_State = 0
     else:
@@ -46,6 +49,7 @@ def LED2_control(self):
         ser.write(bytes(message.encode()))
         self.LED2.setText("OFF")
         self.LED2.move(338,360)
+        self.LED2.setStyleSheet("background-color : red; border-radius :15px;color : white; font: 87 16pt; font-weight : bold;")
         L2_State = 1
 
 def LED3_control(self):
@@ -55,11 +59,13 @@ def LED3_control(self):
         ser.write(bytes(message.encode()))
         self.LED3.setText("ON")
         self.LED3.move(558,180)
+        self.LED3.setStyleSheet("background-color : rgb(112,173,71); border-radius :15px;color : white; font: 87 16pt;font-weight : bold;")
         L3_State = 0
     else:
         message = ''.join(['\x02','k', 'i', 't', 'c', 'h','e','f', '\x03'])
         ser.write(bytes(message.encode()))
         self.LED3.setText("OFF")
+        self.LED3.setStyleSheet("background-color : red; border-radius :15px;color : white; font: 87 16pt; font-weight : bold;")
         self.LED3.move(558,360)
         L3_State = 1
 Ui_MainWindow.signals = signals
