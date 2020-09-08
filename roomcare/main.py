@@ -5,7 +5,7 @@ L1_State=0
 L2_State=0
 L3_State=0
 
-ser = serial.Serial(port='COM4',
+ser = serial.Serial(port='COM5',
                     baudrate=9600,
                     parity=serial.PARITY_NONE,
                     stopbits=serial.STOPBITS_ONE,
@@ -22,10 +22,15 @@ def LED1_control(self):
     if(L1_State):
         message = ''.join(['\x02','l', 'i', 'v', 'i', 'n','g', 'n','\x03'])
         ser.write(bytes(message.encode()))
+        self.LED1.setText("ON")
+        self.LED1.move(122,180)
         L1_State = 0
+        
     else:
         message = ''.join(['\x02','l', 'i', 'v', 'i', 'n','g','f', '\x03'])
         ser.write(bytes(message.encode()))
+        self.LED1.setText("OFF")
+        self.LED1.move(122,360)
         L1_State = 1
 
 def LED2_control(self):
@@ -33,10 +38,14 @@ def LED2_control(self):
     if(L2_State):
         message = ''.join(['\x02','b', 'a', 't', 'h', 'n', '\x03'])
         ser.write(bytes(message.encode()))
+        self.LED2.setText("ON")
+        self.LED2.move(338,180)
         L2_State = 0
     else:
         message = ''.join(['\x02','b', 'a', 't', 'h', 'f', '\x03'])
         ser.write(bytes(message.encode()))
+        self.LED2.setText("OFF")
+        self.LED2.move(338,360)
         L2_State = 1
 
 def LED3_control(self):
@@ -44,10 +53,14 @@ def LED3_control(self):
     if(L3_State):
         message = ''.join(['\x02','k', 'i', 't', 'c', 'h','e','n', '\x03'])
         ser.write(bytes(message.encode()))
+        self.LED3.setText("ON")
+        self.LED3.move(558,180)
         L3_State = 0
     else:
         message = ''.join(['\x02','k', 'i', 't', 'c', 'h','e','f', '\x03'])
         ser.write(bytes(message.encode()))
+        self.LED3.setText("OFF")
+        self.LED3.move(558,360)
         L3_State = 1
 Ui_MainWindow.signals = signals
 Ui_MainWindow.LED1_control = LED1_control
