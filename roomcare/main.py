@@ -18,6 +18,13 @@ def signals(self):
     self.LED2.clicked.connect(self.LED2_control)
     self.LED3.clicked.connect(self.LED3_control)
     
+def dht11(self):
+    ser_data = ser.readline()
+    temp_humi_data = ser_data.decode('uft-8')
+    print(str(temp_humi_data))
+    #serial_data = ser.write(bytes(data.decode()))
+    #self.temp.setText("temp")
+
 
 def LED1_control(self):
     global L1_State
@@ -54,12 +61,7 @@ def LED2_control(self):
         self.LED2.setStyleSheet("background-color : red; border-radius :15px;color : white; font: 87 16pt; font-weight : bold;")
         L2_State = 1
 
-def dht11(self):
-    global dht11
-    for i in range(5):
-        ser.read(bytes(dht11[i].encode()))
 
-    print(dht11[i])
 
 
 
@@ -86,6 +88,7 @@ Ui_MainWindow.signals = signals
 Ui_MainWindow.LED1_control = LED1_control
 Ui_MainWindow.LED2_control = LED2_control
 Ui_MainWindow.LED3_control = LED3_control
+Ui_MainWindow.dht11 = dht11
 
 if __name__=="__main__":
     import sys
@@ -94,5 +97,6 @@ if __name__=="__main__":
     ui = Ui_MainWindow()
     ui.setupUi(MainWindow)
     ui.signals()
+    ui.dht11()
     MainWindow.show()
     sys.exit(app.exec_())
