@@ -46,7 +46,7 @@
      <string>사자성어</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="pushButton">
+   <widget class="QPushButton" name="add">
     <property name="geometry">
      <rect>
       <x>80</x>
@@ -63,7 +63,7 @@ font: 11pt &quot;Agency FB&quot;;</string>
      <string>추가하기</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="pushButton_2">
+   <widget class="QPushButton" name="answer">
     <property name="geometry">
      <rect>
       <x>330</x>
@@ -80,7 +80,7 @@ font: 11pt &quot;Agency FB&quot;;</string>
      <string>정답보기</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="pushButton_3">
+   <widget class="QPushButton" name="next">
     <property name="geometry">
      <rect>
       <x>570</x>
@@ -95,6 +95,26 @@ font: 11pt &quot;Agency FB&quot;;</string>
     </property>
     <property name="text">
      <string>다음</string>
+    </property>
+   </widget>
+   <widget class="QTextEdit" name="word">
+    <property name="geometry">
+     <rect>
+      <x>220</x>
+      <y>160</y>
+      <width>341</width>
+      <height>121</height>
+     </rect>
+    </property>
+   </widget>
+   <widget class="QTextEdit" name="word2">
+    <property name="geometry">
+     <rect>
+      <x>220</x>
+      <y>300</y>
+      <width>341</width>
+      <height>121</height>
+     </rect>
     </property>
    </widget>
   </widget>
