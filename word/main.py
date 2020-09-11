@@ -1,14 +1,17 @@
-from PyQt5 import QtCore, QtGui, QtWidgets
+from PyQt5.QtWidgets import *
+from PyQt5.QtCore import *
+from PyQt5.QtGui import *
+from word import *
 from add_page import *
+        
+def event(self):
+    self.add.clicked.connect(self.add_click)
 
-
-class Main(QtWidgets.QStackedWidget):
-    pager = pyqtSignal(int)
-    def __init__(self):
-        super().__init__()
-
-    add = add_page(self.pager)
-    self.addWidget(add_page)
+def add_click(self):
+    #self.pager.connect(self.add_page)
+    print('hello')
+Ui_MainWindow.event = event
+Ui_MainWindow.add_click = add_click
 
 if __name__=="__main__":
     import sys
@@ -16,7 +19,7 @@ if __name__=="__main__":
     MainWindow = QtWidgets.QMainWindow()
     ui = Ui_MainWindow()
     ui.setupUi(MainWindow)
-    ui.button_click()
-    ui.add()
+    ui.event()
+    ui.add_click()
     MainWindow.show()
     sys.exit(app.exec_())
