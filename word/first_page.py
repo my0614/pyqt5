@@ -1,14 +1,6 @@
-# -*- coding: utf-8 -*-
-
-# Form implementation generated from reading ui file '.\first_page.ui'
-#
-# Created by: PyQt5 UI code generator 5.13.2
-#
-# WARNING! All changes made in this file will be lost!
-
 
 from PyQt5 import QtCore, QtGui, QtWidgets
-
+import sqlite3
 
 class Ui_first_page(QtWidgets.QWidget):
     def __init__(self,pager = None):
@@ -36,9 +28,24 @@ class Ui_first_page(QtWidgets.QWidget):
         self.korean.setGeometry(QtCore.QRect(390, 60, 51, 41))
         self.korean.setStyleSheet("font: 11pt \"Agency FB\";")
         self.korean.setObjectName("korean")
-
+        #self.pushButton.click.connect(self.sql)
         self.retranslateUi(self)
         QtCore.QMetaObject.connectSlotsByName(self)
+
+        self.pushButton.clicked.connect(lambda : self.pager.emit(0))
+
+    #def sql(self,form):
+     #   con = sqlite3.connect("data.db")
+      #  cur - con.cursor()
+       # cur.execute("CREATE TABLE if not exists datas(word str, word_mean char);")
+
+       # word_data = 0
+       # word_mean = 0
+
+        #cur.execute("INSERT INTO datas VALUES({}, {});".format(word_data, word_mean))
+        #con.connect()
+        #con.cloese()
+        
 
     def retranslateUi(self, form):
         _translate = QtCore.QCoreApplication.translate
