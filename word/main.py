@@ -11,8 +11,12 @@ class Main(QtWidgets.QStackedWidget):
     def __init__(self):
         super().__init__()
         self.pager.connect(self.setCurrentIndex) 
+
         self.start_page = Ui_start_page(self.pager)
         self.addWidget(self.start_page) #index 0
+        
+        self.first_page = Ui_first_page(self.pager)
+        self.addWidget(self.first_page) #index 1
         self.resize(800,800)
         
         
