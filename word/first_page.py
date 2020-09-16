@@ -40,7 +40,7 @@ class Ui_first_page(QtWidgets.QWidget):
         cur = con.cursor()
         cur.execute("CREATE TABLE if not exists hello(one text, two text);")
 
-        word = 'min'
+        word = self.textEdit.toPlainText
         word_mean = 'young'
         cur.execute("INSERT INTO hello(one, two) values('mmi','young');")
         cur.execute("INSERT INTO hello values('poi','u');")
