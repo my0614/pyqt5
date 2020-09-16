@@ -1,7 +1,7 @@
 
 from PyQt5 import QtCore, QtGui, QtWidgets
 import sqlite3
-from first_page import *
+
 class Ui_start_page(QtWidgets.QWidget):
     def __init__(self,pager = None):
         super().__init__()
@@ -45,21 +45,15 @@ class Ui_start_page(QtWidgets.QWidget):
 
 
     def answer_word(self, form):
+        cnt = 0
         con = sqlite3.connect("./hello.db")
         cur = con.cursor()
         cur.execute("CREATE TABLE if not exists hello(one text, two text);")
-        cur.execute("")
-        self.word1.toPlainText() = word
-        self.word2.toPlainText() = word_mean
-
-        print(word1.toPlainText())
-        print(word2.toPlainText())
-
-        con.commit()
-        con.close()
-
-
-
+        cur.execute("SELECT * FROM hello LIMIT 0, 1;")
+        result = str(cur.fetchall())
+        print(result)
+        self.word2.setPlainText(result)
+        
 
     def retranslateUi(self, form):
         _translate = QtCore.QCoreApplication.translate
