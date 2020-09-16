@@ -6,7 +6,7 @@ L2_State=0
 L3_State=0
 
 ser = serial.Serial(port='COM4',
-                    baudrate=115200,
+                    baudrate=9600,
                     parity=serial.PARITY_NONE,
                     stopbits=serial.STOPBITS_ONE,
                     bytesize=serial.EIGHTBITS,

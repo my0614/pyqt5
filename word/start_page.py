@@ -43,9 +43,14 @@ class Ui_start_page(QtWidgets.QWidget):
         self.add.setStyleSheet("background-color : gray;\n"
 "font: 11pt \"Agency FB\";")
         self.add.setObjectName("add")
-
         self.retranslateUi(self)
         QtCore.QMetaObject.connectSlotsByName(self)
+        
+        self.add.clicked.connect(lambda : self.pager.emit(1))
+    
+
+
+
 
     def retranslateUi(self, form):
         _translate = QtCore.QCoreApplication.translate

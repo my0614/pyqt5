@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<!-- saved from url=(0026)http://127.0.0.1:5000/main -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./Room Care_files/page.css">
+   
+    <script type="text/javascript" src="./Room Care_files/main.js.다운로드"> </script>
+    <title>Room Care</title>
+    <style>
+        #button1, #button2 ,#button3
+        {
+            margin-left: 10px;
+                margin-top: 10px;
+                float: left;
+                background-color: rgb(112, 173, 71);
+                width: 130px;
+                height: 100px;
+                border-radius: 15px;
+                text-align: center;
+                color : white;
+                font-size: 20px;
+                font-weight: bold;
+                vertical-align: middle;
+                line-height: 100px;
+                border : none;
+                outline: none;
+                cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <span class="tit" style="display : inline-block;">ROOM CARE</span>
+        <span class="txt" style="word-spacing: 11em;">거실 커튼 화장실 온도</span>
+       
+        <div class="flex_container">
+
+            <div class="livingroom">
+                <button id="button1" style="color: red;position: fixed;top: -150px;">
+                    ON
+                </button>
+            </div>
+        
+            <div class="livingroom">
+                <button id="button2">
+                    OFF
+                </button>
+                
+            </div>
+            <div class="livingroom">
+                <button id="button3">
+                    ON
+                </button>
+            </div>
+          
+        
+        </div>
+       
+        <div class="flex_container2">
+            <div class="temp">
+                temp
+            </div>
+            <div class="temp">
+                humi
+            </div>
+
+        </div></header>
+        <span style="color: black;   font-size : 16px;  font-weight: bold; position: fixed;top : 400px; left: 1070px;">
+            습도
+        </span>
+        <script src="./Room Care_files/jquery.min.js.다운로드"></script>
+        <script type="text/javascript">
+        window.onload = function()
+            {
+                document.getElementById('button1').onclick = function()
+            {
+                this.style.color = 'red';
+                this.scrollBy(0,-150);
+            }
+            };
+        </script>
+       
+
+
+</body></html>

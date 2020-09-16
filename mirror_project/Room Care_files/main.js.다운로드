@@ -1,0 +1,4 @@
+document.getElementById('bt1').onclick = function ()
+{
+    window.scrollBy({ top: 100, left :0, behavior : 'smooth'}); //아래로 이동
+}

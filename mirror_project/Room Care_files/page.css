@@ -1,0 +1,113 @@
+header{
+    position: fixed;
+    top : 100px; left: 300px;
+    border : 1px solid rgb(112, 173, 71);
+    background-color:  rgb(112, 173, 71);
+    width: 920px;
+    height: 500px;
+    
+}
+#button
+{
+    margin-left: 10px;
+    margin-top: 10px;
+    float: left;
+    background-color: rgb(112, 173, 71);
+    width: 130px;
+    height: 100px;
+    border-radius: 15px;
+    text-align: center;
+    color : white;
+    font-size: 20px;
+    font-weight: bold;
+    vertical-align: middle;
+    line-height: 100px;
+
+}
+.txt
+{
+    flex : 1;
+    overflow: auto;
+    position: fixed;
+    top : 215px; left: 410px;
+    color: black;
+    font-size : 16px;
+    font-weight: bold;
+    
+
+}
+
+.tit{
+    position: fixed;
+    top : 100px; left: 625px;
+    padding: 15px;
+    font-size :42px;
+    color : white;
+    font-weight: bold;
+    text-align: center;
+    
+}
+.livingroom
+{
+
+    background-color: white;
+    border-radius: 15px;
+    width: 150px;
+    height: 300px;
+}
+
+
+
+.temp
+{
+    background-color: white;
+    border-radius: 15px;
+    width: 150px;
+    height: 120px;
+    font-size: 20px;
+    font-weight: bold;
+    vertical-align: middle;
+    line-height: 70px;
+    text-align: center;
+
+}
+
+.flex_container
+{
+    position: fixed;
+    top : 250px; left: 350px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    height:  100%;
+    width: 575px;
+    height: 300px;
+}
+.flex_item
+{
+  
+    position: fixed;
+    top : 260px; left: 360px;
+    display: inline-block;
+    flex: 25%;
+    overflow: auto; 
+}
+
+.flex_container2
+{
+    position: fixed;
+    top : 250px; left: 1010px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height:  100%;
+    width: 180px;
+    height: 300px;
+}
+.flex_item2
+{
+  
+    position: fixed;
+    top : 260px; left: 1010px;
+    overflow: auto; 
+}

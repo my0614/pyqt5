@@ -6,7 +6,8 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 from PyQt5.QtCore import QTimer
 from datetime import datetime
 import calendar
-import sys
+from multiprocessing import Process
+
 
 def timer_event(self):
     #now_time 
@@ -17,7 +18,7 @@ def timer_event(self):
 def dinner_event(self):
     self.timer2 = QTimer()
     self.timer2.start(1000)
-    self.timer2.timeout.connect(self.diner)
+    self.timer2.timeout.connect(self.meal)
 
 def wheather_event(self):
     self.timer3 = QTimer()
@@ -69,13 +70,23 @@ def time_crolling(self):
         if clock.second <=10 and clock.minute <= 10:
             self.now_time.setText("AM 0" + str(clock.hour) + " : 0" + str(clock.minute) + " : 0" + str(clock.second))
 
-    elif clock.hour <= 12:
+    elif clock.hour <= 10:
         if clock.second >= 10 and clock.minute >=10:
             self.now_time.setText("AM  0" + str(clock.hour) + " : " + str(clock.minute) + " : " + str(clock.second))
         elif clock.second >= 10 and clock.minute <= 10:
             self.now_time.setText("AM  0" + str(clock.hour) + " : 0" + str(clock.minute) + " : " + str(clock.second))
         elif clock.second <= 10 and clock.minute >= 10:
             self.now_time.setText("AM  0" + str(clock.hour) + " : " + str(clock.minute) + " : 0" + str(clock.second))
+        if clock.second <=10 and clock.minute <= 10:
+            self.now_time.setText("AM " + str(clock.hour) + " : 0" + str(clock.minute) + " : 0" + str(clock.second))
+    
+    elif clock.hour >= 10 and clock.hour <=12:
+        if clock.second >= 10 and clock.minute >=10:
+            self.now_time.setText("AM  " + str(clock.hour) + " : " + str(clock.minute) + " : " + str(clock.second))
+        elif clock.second >= 10 and clock.minute <= 10:
+            self.now_time.setText("AM  " + str(clock.hour) + " : 0" + str(clock.minute) + " : " + str(clock.second))
+        elif clock.second <= 10 and clock.minute >= 10:
+            self.now_time.setText("AM  " + str(clock.hour) + " : " + str(clock.minute) + " : 0" + str(clock.second))
         if clock.second <=10 and clock.minute <= 10:
             self.now_time.setText("AM " + str(clock.hour) + " : 0" + str(clock.minute) + " : 0" + str(clock.second))
         
@@ -89,7 +100,7 @@ def news_crolling(self):
     sub_key = news_soup.select("span.tit")
 
     index = 0
-    key=2
+    key= 1
     self.topic.append("뉴스")
     for key in sub_key:
         index += 1
@@ -133,42 +144,34 @@ def todo(self):
  
 
 
-
-
-
-
-def diner(self):
+def meal(self):
     self.diner_moring.clear()
     date = self.calendar.selectedDate() #QDate 타입
-
-    #print(date.year(), date.month(),date.day())
+    print(date)
     clock2 = datetime.today()
     api = SchoolAPI(SchoolAPI.Region.DAEJEON, 'G100000170')
-    meals = api.get_monthly_menus(date.year(),date.month())
-    if clock2.hour >=6 and clock2.hour <=11:
+    meals = api.get_monthly_menus(date.year(), date.month())
+
+    
+    if clock2.hour >=6 and clock2.hour <=10:
         self.diner_moring.append("<아침 메뉴>")
         self.diner_moring.append('\n'.join(meals[date.day()].breakfast)) # 아침 : breakfast 점심 : lunch 저녁 : dinner
-    elif clock2.hour >= 12 and clock2.hour <= 16:
+    elif clock2.hour >= 11 and clock2.hour <= 14:
         self.diner_moring.append("<점심 메뉴>")
         self.diner_moring.append('\n'.join(meals[date.day()].lunch)) # 아침 : breakfast 점심 : lunch 저녁 : dinner
-    elif clock2.hour >= 17:
-        self.diner_moring.append("<저녁 메뉴>")
-        self.diner_moring.append('\n'.join(meals[date.day()].dinner)) # 아침 : breakfast 점심 : lunch 저녁 : dinner
     else:
-        self.diner_moring.append("급식이 없습니다.")
-    
-
-
-
+        self.diner_moring.append("<저녁 메뉴>")
+        self.diner_moring.append('\n'.join(meals[date.day()].dinner))
+   
+   
 
 Ui_MainWindow.timer_event = timer_event
 Ui_MainWindow.wheather_crolling = wheather_crolling
 Ui_MainWindow.time_crolling = time_crolling
 Ui_MainWindow.news_crolling = news_crolling
 Ui_MainWindow.baseball_crolling =baseball_crolling
-Ui_MainWindow.diner = diner
+Ui_MainWindow.meal = meal
 Ui_MainWindow.todo = todo
-#Ui_MainWindow.bt_click = bt_click
 Ui_MainWindow.news_event = news_event
 Ui_MainWindow.wheather_event = wheather_event
 Ui_MainWindow.dinner_event = dinner_event
@@ -185,9 +188,8 @@ if __name__ == "__main__":
     ui.time_crolling()
     ui.news_crolling()
     ui.baseball_crolling()
-    ui.diner()
+    
     ui.todo()
-    #ui.bt_click()
     ui.news_event()
     ui.wheather_event()
     ui.dinner_event()
