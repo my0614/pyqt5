@@ -1,15 +1,7 @@
-# -*- coding: utf-8 -*-
-
-# Form implementation generated from reading ui file '.\start_page.ui'
-#
-# Created by: PyQt5 UI code generator 5.13.2
-#
-# WARNING! All changes made in this file will be lost!
-
 
 from PyQt5 import QtCore, QtGui, QtWidgets
-
-
+import sqlite3
+from first_page import *
 class Ui_start_page(QtWidgets.QWidget):
     def __init__(self,pager = None):
         super().__init__()
@@ -24,7 +16,7 @@ class Ui_start_page(QtWidgets.QWidget):
         self.title.setObjectName("title")
         self.word = QtWidgets.QTextEdit(self)
         self.word.setGeometry(QtCore.QRect(210, 180, 341, 121))
-        self.word.setObjectName("word")
+        self.word.setObjectName("word1")
         self.word2 = QtWidgets.QTextEdit(self)
         self.word2.setGeometry(QtCore.QRect(210, 350, 341, 121))
         self.word2.setObjectName("word2")
@@ -47,7 +39,24 @@ class Ui_start_page(QtWidgets.QWidget):
         QtCore.QMetaObject.connectSlotsByName(self)
         
         self.add.clicked.connect(lambda : self.pager.emit(1))
+        self.answer.clicked.connect(self.answer_word)
     
+
+
+
+    def answer_word(self, form):
+        con = sqlite3.connect("./hello.db")
+        cur = con.cursor()
+        cur.execute("CREATE TABLE if not exists hello(one text, two text);")
+        cur.execute("")
+        self.word1.toPlainText() = word
+        self.word2.toPlainText() = word_mean
+
+        print(word1.toPlainText())
+        print(word2.toPlainText())
+
+        con.commit()
+        con.close()
 
 
 
