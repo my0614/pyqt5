@@ -1,6 +1,4 @@
 
-
-
 from PyQt5 import QtCore, QtGui, QtWidgets
 import sqlite3
 
@@ -36,24 +34,24 @@ class Ui_first_page(QtWidgets.QWidget):
         self.pushButton.clicked.connect(lambda : self.pager.emit(0))
         self.pushButton_2.clicked.connect(lambda : self.pager.emit(0))
 
-        con = sqlite3.connect("./hello.db")
-        cur = con.cursor()
-        cur.execute("CREATE TABLE if not exists hello(one text, two text);")
-
-        word = self.textEdit.toPlainText
-        word_mean = 'young'
-        cur.execute("INSERT INTO hello(one, two) values('mmi','young');")
-        cur.execute("INSERT INTO hello values('poi','u');")
-
-        con.commit()
-        con.close()
-        print(str(cur))
-        print("finish")
-
-
+        
+        self.pushButton.clicked.connect(self.add_word)
         self.retranslateUi(self)
         QtCore.QMetaObject.connectSlotsByName(self)
 
+    def add_word(self,form):
+        con = sqlite3.connect("./hello.db")
+        cur = con.cursor()
+        cur.execute("CREATE TABLE if not exists hello(one text, two text);")
+        global word = str(self.textEdit.toPlainText())
+        global word_mean = str(self.textEdit_2.toPlainText())
+        cur.execute("INSERT INTO hello(one, two) values(?,?);",(word,word_mean))
+        print(word)
+        print(word_mean)
+
+        con.commit()
+        con.close()
+        
     def retranslateUi(self, form):
         _translate = QtCore.QCoreApplication.translate
         self.setWindowTitle(_translate("self", "self"))
