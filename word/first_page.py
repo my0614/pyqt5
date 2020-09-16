@@ -1,6 +1,7 @@
 
 from PyQt5 import QtCore, QtGui, QtWidgets
 import sqlite3
+from start_page import *
 
 class Ui_first_page(QtWidgets.QWidget):
     def __init__(self,pager = None):
@@ -38,17 +39,18 @@ class Ui_first_page(QtWidgets.QWidget):
         self.pushButton.clicked.connect(self.add_word)
         self.retranslateUi(self)
         QtCore.QMetaObject.connectSlotsByName(self)
+    
+    
 
     def add_word(self,form):
         con = sqlite3.connect("./hello.db")
         cur = con.cursor()
         cur.execute("CREATE TABLE if not exists hello(one text, two text);")
-        global word = str(self.textEdit.toPlainText())
-        global word_mean = str(self.textEdit_2.toPlainText())
+        word = str(self.textEdit.toPlainText())
+        word_mean = str(self.textEdit_2.toPlainText())
         cur.execute("INSERT INTO hello(one, two) values(?,?);",(word,word_mean))
         print(word)
         print(word_mean)
-
         con.commit()
         con.close()
         

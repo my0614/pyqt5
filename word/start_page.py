@@ -7,7 +7,7 @@ class Ui_start_page(QtWidgets.QWidget):
         super().__init__()
         self.pager = pager
         self.setupUi()
-        
+   
 
     def setupUi(self):
         self.title = QtWidgets.QLabel(self)
@@ -43,17 +43,19 @@ class Ui_start_page(QtWidgets.QWidget):
     
 
 
+    cnt  = 0   
 
     def answer_word(self, form):
-        cnt = 0
+        #cnt = cnt+1
         con = sqlite3.connect("./hello.db")
         cur = con.cursor()
         cur.execute("CREATE TABLE if not exists hello(one text, two text);")
         cur.execute("SELECT * FROM hello LIMIT 0, 1;")
-        result = str(cur.fetchall())
-        print(result)
-        self.word2.setPlainText(result)
-        
+        result = cur.fetchall()
+        for row in result:
+            self.word2.setPlainText("\n".join(row))
+        con.commit()
+        con.close()
 
     def retranslateUi(self, form):
         _translate = QtCore.QCoreApplication.translate
