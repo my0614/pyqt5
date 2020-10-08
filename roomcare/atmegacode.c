@@ -97,6 +97,8 @@ void dht11()
 		//itoa(CheckSum,data2[4],10);
 		UDR0 = data2[4];
 		
+	
+	
 	}
 	
 }
