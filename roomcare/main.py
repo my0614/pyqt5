@@ -20,19 +20,16 @@ def signals(self):
     self.LED2.clicked.connect(self.LED2_control)
     self.LED3.clicked.connect(self.LED3_control)
 
-
-    
-        
             
 def dht11(ui):
     while True:
-        ser_data = ser.readline().decode('utf-8')
-        if ser_data:
-            print("success")
-            print(str(ser_data))
-            ui.temp.setText(ser_data[0:4]) 
-            ui.humi.setText(ser_data[4:7])
-            time.sleep(3)  
+        ser_data = str(ser.readline())
+        print("success")
+        print(ser_data)
+            
+        ui.temp.setText(ser_data[3:6] + "°C") 
+        ui.humi.setText(ser_data[6:8] + "%")
+        time.sleep(3)  
     
 
 def LED1_control(self):
