@@ -1,3 +1,4 @@
+
 from ballswitch import *
 from PyQt5 import QtCore, QtGui, QtWidgets
 import pyqtgraph as pg
