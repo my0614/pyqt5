@@ -15,6 +15,7 @@ ser = serial.Serial(port='COM7',
 
 def signals(self):
     cnt = 0
+    cnt2 = 0
     
     
 def ballsensor(self):
@@ -23,9 +24,12 @@ def ballsensor(self):
         if(ser_data):
             print("success")
             print(ser_data)
-            cnt = int(ser_data[0:4]) # 슬라이싱한값을 int로 바로 변환
+            cnt = int(ser_data[0:2]) # 슬라이싱한값을 int로 바로 변환
             print(cnt)
             self.label_2.setText(str(cnt))
+            cnt2 = int(ser_data[2:4])
+            print(cnt2)
+            self.label_4.setText(str(cnt2))
 
 
 
