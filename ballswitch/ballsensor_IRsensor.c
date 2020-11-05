@@ -47,29 +47,45 @@ int main(void)
 	DDRB = 0x00;
 	uart_init(BAUDRATE(9600));
 	uart_string("start");
-	char str[3] = {0,};
-	unsigned int count = 0;
+	char str[6] = {0,};
+	unsigned int count = 0,count2 = 0;
+	unsigned int toggle = 0;
 	sei();
-	
+	DDRG = 0x00;
     while (1) 
     {
-		if(PINB & 0x01)
-		{
-			PORTD = 0x00;
+		PORTG = 0xf0;
+		if(!(PINB & 0x01))
+			toggle = 1;	
 
+		if(!(PINB & 0x02))	
+			toggle = 2;
+	
+		
+		if(toggle ==2) 
+		{
+			PORTD = 0x0f;
+			count2++;
+			_delay_ms(500);
+			toggle=0;
+			PORTD = 0x00;
 		
 		}
-		else
+		
+		if(toggle == 1)
 		{
-			PORTD = 0xff;
-			count ++;
-				
-
+			PORTD = 0xf0;
+			count++;
+			_delay_ms(500);
+			toggle = 0;
+			PORTD = 0x00;
 		}
-		sprintf(str, "%0d",count);
-		uart_string(str);
+		
+		
+		sprintf(str, "%0d %0d",count,count2);
+		uart_string(str); 
 		_delay_ms(1500);
 		
     }
+	
 }
-
