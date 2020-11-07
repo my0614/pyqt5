@@ -1,6 +1,13 @@
+# -*- coding: utf-8 -*-
+
+# Form implementation generated from reading ui file '.\sensor.ui'
+#
+# Created by: PyQt5 UI code generator 5.13.2
+#
+# WARNING! All changes made in this file will be lost!
+
+
 from PyQt5 import QtCore, QtGui, QtWidgets
-
-
 
 
 class Ui_MainWindow(object):
@@ -47,16 +54,20 @@ class Ui_MainWindow(object):
         self.password.setText("")
         self.password.setObjectName("password")
         self.password_pic = QtWidgets.QPushButton(self.centralwidget)
-        self.password_pic.setGeometry(QtCore.QRect(70, 160, 371, 271))
+        self.password_pic.setGeometry(QtCore.QRect(80, 140, 361, 261))
         self.password_pic.setStyleSheet("background-image: url(:/newPrefix/password.png);")
         self.password_pic.setText("")
         self.password_pic.setObjectName("password_pic")
         self.password_bt = QtWidgets.QPushButton(self.centralwidget)
-        self.password_bt.setGeometry(QtCore.QRect(100, 450, 321, 61))
+        self.password_bt.setGeometry(QtCore.QRect(100, 480, 321, 61))
         self.password_bt.setStyleSheet("background-color: rgb(0, 0, 0);\n"
 "font: 75 15pt \"Agency FB\";\n"
 "color : white;")
         self.password_bt.setObjectName("password_bt")
+        self.ch_password = QtWidgets.QTextEdit(self.centralwidget)
+        self.ch_password.setGeometry(QtCore.QRect(130, 410, 261, 61))
+        self.ch_password.setStyleSheet("font: 75 11pt \"Arial\";")
+        self.ch_password.setObjectName("ch_password")
         self.background.raise_()
         self.title.raise_()
         self.sensor.raise_()
@@ -65,6 +76,7 @@ class Ui_MainWindow(object):
         self.password.raise_()
         self.password_pic.raise_()
         self.password_bt.raise_()
+        self.ch_password.raise_()
         MainWindow.setCentralWidget(self.centralwidget)
         self.menubar = QtWidgets.QMenuBar(MainWindow)
         self.menubar.setGeometry(QtCore.QRect(0, 0, 1056, 26))
@@ -83,14 +95,12 @@ class Ui_MainWindow(object):
         self.title.setText(_translate("MainWindow", " 침입자 감지 시스템"))
         self.sensor_text.setText(_translate("MainWindow", "도어락 센서 감지"))
         self.password_bt.setText(_translate("MainWindow", "비밀번호 변경하기"))
-
-
-
+        
+import door_qrc
 import knock_qrc
 import password_qrc
 import sound_qrc
 import ultrasonic_qrc
-import door_qrc
 
 
 if __name__ == "__main__":

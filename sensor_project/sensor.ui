@@ -126,10 +126,10 @@ border:none;
    <widget class="QPushButton" name="password_pic">
     <property name="geometry">
      <rect>
-      <x>70</x>
-      <y>160</y>
-      <width>371</width>
-      <height>271</height>
+      <x>80</x>
+      <y>140</y>
+      <width>361</width>
+      <height>261</height>
      </rect>
     </property>
     <property name="styleSheet">
@@ -143,7 +143,7 @@ border:none;
     <property name="geometry">
      <rect>
       <x>100</x>
-      <y>450</y>
+      <y>480</y>
       <width>321</width>
       <height>61</height>
      </rect>
@@ -157,6 +157,19 @@ color : white;</string>
      <string>비밀번호 변경하기</string>
     </property>
    </widget>
+   <widget class="QTextEdit" name="ch_password">
+    <property name="geometry">
+     <rect>
+      <x>130</x>
+      <y>410</y>
+      <width>261</width>
+      <height>61</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">font: 75 11pt &quot;Arial&quot;;</string>
+    </property>
+   </widget>
    <zorder>background</zorder>
    <zorder>title</zorder>
    <zorder>sensor</zorder>
@@ -165,6 +178,7 @@ color : white;</string>
    <zorder>password</zorder>
    <zorder>password_pic</zorder>
    <zorder>password_bt</zorder>
+   <zorder>ch_password</zorder>
   </widget>
   <widget class="QMenuBar" name="menubar">
    <property name="geometry">
