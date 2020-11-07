@@ -1,0 +1,5 @@
+<RCC>
+  <qresource prefix="newPrefix">
+    <file>ultrasonic.png</file>
+  </qresource>
+</RCC>

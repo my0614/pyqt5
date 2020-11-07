@@ -1,13 +1,6 @@
-# -*- coding: utf-8 -*-
-
-# Form implementation generated from reading ui file '.\sensor.ui'
-#
-# Created by: PyQt5 UI code generator 5.13.2
-#
-# WARNING! All changes made in this file will be lost!
-
-
 from PyQt5 import QtCore, QtGui, QtWidgets
+
+
 
 
 class Ui_MainWindow(object):
@@ -90,6 +83,14 @@ class Ui_MainWindow(object):
         self.title.setText(_translate("MainWindow", " 침입자 감지 시스템"))
         self.sensor_text.setText(_translate("MainWindow", "도어락 센서 감지"))
         self.password_bt.setText(_translate("MainWindow", "비밀번호 변경하기"))
+
+
+
+import knock_qrc
+import password_qrc
+import sound_qrc
+import ultrasonic_qrc
+import door_qrc
 
 
 if __name__ == "__main__":
