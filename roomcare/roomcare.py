@@ -47,9 +47,9 @@ class Ui_MainWindow(object):
         self.temp.setText("")
         self.temp.setObjectName("temp")
         self.humi = QtWidgets.QLabel(self.centralwidget)
+        self.temp.setStyleSheet("font-size: 20pt; background-color : white; border-radius : 15px; font-weight : bold;")
         self.humi.setGeometry(QtCore.QRect(770, 360, 160, 130))
-        self.humi.setStyleSheet("background-color : white;\n"
-"border-radius : 15px;")
+        self.humi.setStyleSheet("font-size: 20pt; background-color : white; border-radius : 15px; font-weight : bold;")
         self.humi.setText("")
         self.humi.setObjectName("humi")
         self.lineEdit = QtWidgets.QLineEdit(self.centralwidget)
@@ -81,19 +81,19 @@ class Ui_MainWindow(object):
         self.LED1.setGeometry(QtCore.QRect(120, 180, 141, 111))
         self.LED1.setStyleSheet("border-radius :15px;\n"
 "color : white;\n"
-"font: 87 16pt \"Arial Black\";")
+"font: 87 16pt \"Arial Black\";font-wieght : bold;")
         self.LED1.setObjectName("LED1")
         self.LED3 = QtWidgets.QPushButton(self.centralwidget)
         self.LED3.setGeometry(QtCore.QRect(560, 180, 141, 111))
         self.LED3.setStyleSheet("border-radius :15px;\n"
 "color : white;\n"
-"font: 87 16pt \"Arial Black\";")
+"font: 87 16pt \"Arial Black\";font-wieght : bold;")
         self.LED3.setObjectName("LED3")
         self.LED2 = QtWidgets.QPushButton(self.centralwidget)
         self.LED2.setGeometry(QtCore.QRect(340, 370, 141, 111))
         self.LED2.setStyleSheet("border-radius :15px;\n"
 "color : white;\n"
-"font: 87 16pt \"Arial Black\";")
+"font: 87 16pt \"Arial Black\"; font-wieght : bold;")
         self.LED2.setObjectName("LED2")
         MainWindow.setCentralWidget(self.centralwidget)
         self.statusbar = QtWidgets.QStatusBar(MainWindow)

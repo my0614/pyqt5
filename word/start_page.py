@@ -2,7 +2,9 @@
 from PyQt5 import QtCore, QtGui, QtWidgets
 import sqlite3
 
+
 class Ui_start_page(QtWidgets.QWidget):
+
     def __init__(self,pager = None):
         super().__init__()
         self.pager = pager
@@ -40,22 +42,43 @@ class Ui_start_page(QtWidgets.QWidget):
         
         self.add.clicked.connect(lambda : self.pager.emit(1))
         self.answer.clicked.connect(self.answer_word)
-    
+        self.next.clicked.connect(self.next_bt)
 
 
-    cnt  = 0   
 
     def answer_word(self, form):
-        #cnt = cnt+1
+        
         con = sqlite3.connect("./hello.db")
         cur = con.cursor()
         cur.execute("CREATE TABLE if not exists hello(one text, two text);")
-        cur.execute("SELECT * FROM hello LIMIT 0, 1;")
+        
+        cur.execute("SELECT * FROM hello LIMIT ?, ?;",(0,1))
+
         result = cur.fetchall()
         for row in result:
             self.word2.setPlainText("\n".join(row))
         con.commit()
         con.close()
+
+
+    def next_bt(self, form):
+        cnt = 1
+        cnt2 = cnt2+ 1
+        con = sqlite3.connect("./hello.db")
+        cur = con.cursor()
+        cur.execute("CREATE TABLE if not exists hello(one text, two text);")
+
+
+        cur.execute("SELECT * FROM hello LIMIT ?, ?;",(cnt,cnt2))
+        cnt2 +=1
+        result = cur.fetchall()
+
+        for row in result:
+            self.word2.setPlainText("\n".join(row))
+        con.commit()
+        con.close()
+
+        
 
     def retranslateUi(self, form):
         _translate = QtCore.QCoreApplication.translate

@@ -155,13 +155,13 @@ def meal(self):
     
     if clock2.hour >=6 and clock2.hour <=10:
         self.diner_moring.append("<아침 메뉴>")
-        self.diner_moring.append('\n'.join(meals[date.day()].breakfast)) # 아침 : breakfast 점심 : lunch 저녁 : dinner
+        self.diner_moring.append('\n'.join(meals[10].breakfast)) # 아침 : breakfast 점심 : lunch 저녁 : dinner
     elif clock2.hour >= 11 and clock2.hour <= 14:
         self.diner_moring.append("<점심 메뉴>")
-        self.diner_moring.append('\n'.join(meals[date.day()].lunch)) # 아침 : breakfast 점심 : lunch 저녁 : dinner
+        self.diner_moring.append('\n'.join(meals[10].lunch)) # 아침 : breakfast 점심 : lunch 저녁 : dinner
     else:
         self.diner_moring.append("<저녁 메뉴>")
-        self.diner_moring.append('\n'.join(meals[date.day()].dinner))
+        self.diner_moring.append('\n'.join(meals[10].dinner))
    
    
 

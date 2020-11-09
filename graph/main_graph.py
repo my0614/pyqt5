@@ -1,34 +1,51 @@
-from PyQt5 import QtCore, QtGui, QtWidgets
 from graph import *
-import pyqtgraph as pg
+import serial
+import threading
+from threading import Thread
+import time
+
+
+ser = serial.Serial(port='COM5',
+                    baudrate=9600,
+                    parity=serial.PARITY_NONE,
+                    stopbits=serial.STOPBITS_ONE,
+                    bytesize=serial.EIGHTBITS,
+                    timeout=1)
+
+def signals(self):
+    
+
+            
+def dht11(ui):
+    while True:
+        ser_data = str(ser.readline())
+        print("success")
+        print(ser_data)
+            
+        ui.temp.setText(ser_data[3:6] + "°C") 
+        ui.humi.setText(ser_data[6:8] + "%")
+        time.sleep(3)  
+    
+    
 
 
 
-x = [2,4,6,8,10]
-y = [1,2,3,4,5]
-z = [1,3,7,5,10]
-class MyFirstGuiProgram(QtWidgets.QMainWindow, Ui_MainWindow):
-    def __init__(self, parent=None):
-        QtWidgets.QMainWindow.__init__(self, parent=parent)
-        self.setupUi(self)
-        self.graphicsView.setBackground('#11ffff')       
-        self.graphicsView_2.setBackground('#ffffff')
-        self.graphicsView_3.setBackground('y')
-        
-    def cevent(self):
-        self.pushButton.clicked.connect(self.plotGraph)
+Ui_MainWindow.signals = signals
 
-    def plotGraph(self):
-        self.graphicsView.plot(x, pen=pg.mkPen('b', width=2),
-            style=QtCore.Qt.DashLine, symbol=('o'), 
-            symbolBrush='y')
-        self.graphicsView_2.plot(y, pen='#0000ff', symbol='x')
-        self.graphicsView_3.plot(z, pen="#ffffff", symbol = "x")
+Ui_MainWindow.dht11 = dht11
 
-if __name__ == '__main__':
+
+if __name__=="__main__":
     import sys
     app = QtWidgets.QApplication(sys.argv)
-    w = MyFirstGuiProgram()
-    w.show()
-    w.cevent()
+    MainWindow = QtWidgets.QMainWindow()
+    
+    ui = Ui_MainWindow()
+    ui.setupUi(MainWindow)
+    ui.signals()
+    th = threading.Thread(target = dht11,args=(ui,))
+    th.daemon = True
+    th.start()
+    MainWindow.show()
+    
     sys.exit(app.exec_())

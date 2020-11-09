@@ -73,9 +73,7 @@ if __name__=="__main__":
     app = QtWidgets.QApplication(sys.argv)
     ui = MyFirstGuiProgram()
     ui.show()
-   
     th = threading.Thread(target = dht11,args=(ui,))
     th.daemon = True
     th.start()
-
     sys.exit(app.exec_())
