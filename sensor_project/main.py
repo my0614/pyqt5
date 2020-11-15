@@ -50,6 +50,7 @@ def password_ch(self):
 
 
 
+
 Ui_MainWindow.picture = picture
 if __name__=="__main__":
     import sys
