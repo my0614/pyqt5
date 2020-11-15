@@ -42,8 +42,11 @@ def picture(self):
 def password_ch(self):
     ps = self.ch_password.setText() #비밀번호 저장
     print(str(ps)) #비밀번호출력
-    bt_event = QMessageBox.information(self, 'PyQt5',"비밀")
-    
+    bt_event = QMessageBox.information(self, 'PyQt5',"비밀번호를 변경하시겠습니까?", QMessageBox.Yes | QMessageBox.No, QMessageBox.No)
+    if bt_event == QMessageBox.Yes:
+        print("비밀번호 변경")
+    else:
+        print("비밀번호 변경 취소")
 
 
 
