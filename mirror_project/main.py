@@ -90,14 +90,12 @@ def time_crolling(self):
         if clock.second <=10 and clock.minute <= 10:
             self.now_time.setText("AM " + str(clock.hour) + " : 0" + str(clock.minute) + " : 0" + str(clock.second))
         
-    
-        
 
 def news_crolling(self):
     #self.topic.setStyleSheet("font : 75 12pt; ")
     news_source =requests.get("https://search.naver.com/search.naver?sm=tab_hty.top&where=nexearch&query=%EB%89%B4%EC%8A%A4%ED%86%A0%ED%94%BD&oquery=%EB%84%A4%EC%9D%B4%EB%B2%84+%EC%8B%A4%EC%8B%9C%EA%B0%84+%EA%B2%80%EC%83%89%EC%96%B4+%EC%88%9C%EC%9C%84&tqi=UzQlmwp0J14ssflcJlsssssssHR-396770").text
     news_soup = BeautifulSoup(news_source, "html.parser")
-    sub_key = news_soup.select("span.tit")
+    sub_key = news_soup.select("span.txt")
 
     index = 0
     key= 1
@@ -105,12 +103,13 @@ def news_crolling(self):
     for key in sub_key:
         index += 1
         self.topic.append("["+ str(index) + "]  "+str(key))
-        if index >= 5:
+        if index >= 10:
             break
     
     index = 0
     key = 1
     cnt = 1
+    '''
     self.topic.append("\n연예/스포츠")
     for key in sub_key:
         index += 1
@@ -119,7 +118,7 @@ def news_crolling(self):
             cnt += 1
             if index >= 15:
                 break
-    
+    '''
    
 def baseball_crolling(self):
     #self.sports.setStyleSheet("font : 75 12pt;")
@@ -155,13 +154,13 @@ def meal(self):
     
     if clock2.hour >=6 and clock2.hour <=10:
         self.diner_moring.append("<아침 메뉴>")
-        self.diner_moring.append('\n'.join(meals[10].breakfast)) # 아침 : breakfast 점심 : lunch 저녁 : dinner
+        self.diner_moring.append('\n'.join(meals[date.day()].breakfast)) # 아침 : breakfast 점심 : lunch 저녁 : dinner
     elif clock2.hour >= 11 and clock2.hour <= 14:
         self.diner_moring.append("<점심 메뉴>")
-        self.diner_moring.append('\n'.join(meals[10].lunch)) # 아침 : breakfast 점심 : lunch 저녁 : dinner
+        self.diner_moring.append('\n'.join(meals[date.day()].lunch)) # 아침 : breakfast 점심 : lunch 저녁 : dinner
     else:
         self.diner_moring.append("<저녁 메뉴>")
-        self.diner_moring.append('\n'.join(meals[10].dinner))
+        self.diner_moring.append('\n'.join(meals[date.day()].dinner))
    
    
 
